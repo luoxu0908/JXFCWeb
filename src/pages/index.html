@@ -6,78 +6,15 @@ meta-title: Index
   <ul class="tabs" data-deep-link="true" data-update-history="true" data-deep-link-smudge="true"
     data-deep-link-smudge-delay="500" data-tabs id="deeplinked-tabs">
     <li class="tabs-title is-active"><a href="#panel1d" aria-selected="true">房产首页</a></li>
-    <li class="tabs-title"><a href="#panel1d">出 售</a></li>
-    <li class="tabs-title"><a href="#panel1d">出 租</a></li>
-    <li class="tabs-title"><a href="#panel1d">店铺转让</a></li>
-    <li class="tabs-title"><a href="#panel1d">求 购</a></li>
-    <li class="tabs-title"><a href="#panel1d">求 租</a></li>
+    <li class="tabs-title"><a>出 售</a></li>
+    <li class="tabs-title"><a>出 租</a></li>
+    <li class="tabs-title"><a >店铺转让</a></li>
+    <li class="tabs-title"><a >求 购</a></li>
+    <li class="tabs-title"><a >求 租</a></li>
   </ul>
   <div class="tabs-content" data-tabs-content="deeplinked-tabs">
     <div class="tabs-panel is-active" id="panel1d">
-      <div class="grid-x grid-margin-x">
-        <div class="cell medium-4">
-          <div class="callout" data-equalizer-watch>
-            <a href="details.html" target="_blank">
-            <div class="listContent">
-              <img src="assets/img/1.jpg"></div>
-            
-              神农景苑小区3室 2厅 1卫48万元
-            </a>
-          </div>
-        </div>
-        <div class="cell medium-4">
-          <div class="callout" data-equalizer-watch>
-           
-            <a href="details.html" target="_blank"> 
-              <div class="listContent">
-              <img src="assets/img/2.jpg"> </div>
-              神农景苑小区3室 2厅 1卫48万元
-            </a>
 
-          </div>
-        </div>
-        <div class="cell medium-4">
-          <div class="callout" data-equalizer-watch>
-              <a href="details.html" target="_blank">
-            <div class="listContent">
-              <img src="assets/img/3.jpg"> </div>
-           
-              神农景苑小区3室 2厅 1卫48万元
-            </a>
-
-          </div>
-        </div>
-        <div class="cell medium-4">
-          <div class="callout" data-equalizer-watch>
-             <a href="details.html" target="_blank">
-            <div class="listContent">
-              <img src="assets/img/1.jpg"></div>
-             
-              神农景苑小区3室 2厅 1卫48万元
-            </a>
-
-          </div>
-        </div>
-        <div class="cell medium-4">
-          <div class="callout" data-equalizer-watch>
-              <a href="details.html" target="_blank">
-            <div class="listContent">
-              <img src="assets/img/2.jpg"> </div>
-              神农景苑小区3室 2厅 1卫48万元
-            </a>
-          </div>
-        </div>
-        <div class="cell medium-4">
-          <div class="callout" data-equalizer-watch>
-              <a href="details.html" target="_blank">
-            <div class="listContent">
-              <img src="assets/img/3.jpg"> </div>
-              神农景苑小区3室 2厅 1卫48万元
-            </a>
-
-          </div>
-        </div>
-      </div>
     </div>
     <div class="tabs-panel" id="panel2d">
       <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh
@@ -748,6 +685,41 @@ meta-title: Index
       </div>
     </div>
   </div>
+  <script>
+    $(function () {
+      GetTops('', "panel1d");
+    });
+    function GetTops(type, contain) {
+      var data = {
+        'Type': type
+      };
+      $.ajax({
+        url: apiSrc + "YL1.GetTopSixByType.json",
+        method: "POST",
+        dataType: "json",
+        xhrFields: { withCredentials: true },
+        data: {
+          'data': JSON.stringify(data),
+          'WebPartKey': '021cb7cca70748ff89795e3ad544d5eb',
+          'ReqGUID': 'b4bbedbf-e591-4b7a-ad20-101f8f656277'
+        }
+      })
+        .done(function (data) {
+          var Rows = data.d.RetData.Tbl.Rows;
+          if (Rows.length > 0) {
+            var html = '<div class="grid-x grid-margin-x">';
+            for (let index = 0; index < Rows.length; index++) {
+              if(Rows[index].ImageSrc){
+                html += ' <div class="cell medium-4"><div class="callout" data-equalizer-watch><a href="details.html?ID='+Rows[index].ID+'" target="_blank"><div class="listContent"><img src="'+ Rows[index].ImageSrc+'"></div>'+ Rows[index].Description+' ' +Rows[index].HouseLevelDetail+' '+Rows[index].FCZJ+'万</a></div></div>'
+              }
+            }
+            html += "</div>";
+            $("#"+contain).html(html);
+          }
+
+        });
+    }
+  </script>
   <footer>{{> footer}}</footer>
   <style>
     .tabs {

@@ -18,7 +18,7 @@ class Master {
     if (hostname.match(/localhost/)){
       window.appName = '';
       window.appRootPath = '/';
-      window.apiSrc = '//localhost/VMS/';
+      window.apiSrc = 'http://web.tool8.cc/JXFC/BCMain/';
     }
     else {
       if (href.length >= 3) {
