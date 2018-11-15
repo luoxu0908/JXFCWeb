@@ -11,6 +11,7 @@
   <title> 巨鑫房产</title>
   <link rel="stylesheet" href="{{root}}assets/css/app.css">
   <link rel="stylesheet" href="{{root}}assets/css/font-awesome.css">
+  <link rel="stylesheet" href="{{root}}assets/css/main.css">
 </head>
 
 <body>
@@ -54,96 +55,34 @@
     </div>
   </div>
   <br>
-  <div  id="navMenu" style="border-bottom: 1px solid #cccccc;background-color:#ff6700 !important;box-shadow: 0 0 5PX  #cccccc;  z-index: 666;"
-    class="sticky" data-sticky data-margin-top="0">
+  <div id="navMenu" data-margin-top="0">
     <div class="grid-container">
-    <div class="medium-68 cell">
-      <div class="title-bar" data-responsive-toggle="mainNavigation" data-hide-for="medium">
-        <div class="title-bar-left">
-          <button class="menu-icon" type="button" data-toggle="mainNavigation"></button>
-          <div class="title-bar-title">菜单</div>
+      <div class="medium-68 cell">
+        <div class="title-bar" data-responsive-toggle="mainNavigation" data-hide-for="medium">
+          <div class="title-bar-left">
+            <button class="menu-icon" type="button" data-toggle="mainNavigation"></button>
+            <div class="title-bar-title">菜单</div>
+          </div>
         </div>
-      </div>
-      <div class="top-bar" id="mainNavigation" class="sticky" data-sticky data-margin-top="0">
-        <div class="top-bar-left">
-          <ul class="menu vertical medium-horizontal">
-            <li><a href="#">房产交易</a></li>
-            <li><a href="#">二手交易</a></li>
-            <li><a href="#">车辆买卖</a></li>
-            <li><a href="#">生活服务</a></li>
-            <li><a href="#">交通出行</a></li>
-            <li><a href="#">新闻资讯</a></li>
-          </ul>
+        <div class="top-bar" id="mainNavigation" class="sticky" data-sticky data-margin-top="0">
+          <div class="top-bar-left">
+            <ul class="menu vertical medium-horizontal">
+              <li><a href="#">房产交易</a></li>
+              <li><a href="#">二手交易</a></li>
+              <li><a href="#">车辆买卖</a></li>
+              <li><a href="#">生活服务</a></li>
+              <li><a href="#">交通出行</a></li>
+              <li><a href="#">新闻资讯</a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  </div>
-
   <br>
   <script src="{{root}}assets/js/app.js"></script>
   <!-- End Top Bar -->
   <div class="grid-x" style="margin-top:-10px;">{{> body}}</div>
-
-  <style>
-     body{
-    background-color:#f8f8f8;
-  }
-    * {
-      font-family: '微软雅黑';
-    }
-    h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6{
-      font-family: '微软雅黑' !important;
-    }
-    a {
-      color: #000 !important;
-      outline: none;
-    }
-
-    #topMenu {
-      font-size: 14px;
-      z-index: 555;
-    }
-
-    #topMenu a {
-      padding: 0.7rem 0.5rem;
-    }
-
-    #navMenu .top-bar {
-      background-color: #ff6700;
-      height: 42px;
-
-    }
-
-    #mainNavigation {
-      position: relative;
-    }
-
-    #navMenu .menu {
-      background-color: #ff6700 !important;
-      color: #000;
-      position: absolute;
-      width: 100%;
-      top: 0;
-    }
-
-    #navMenu a {
-      color: #fff !important;
-    }
-
-    #navMenu li:hover {
-      background: red;
-    }
-
-    .top-bar {
-      padding: 0;
-    }
-
-    h5 {
-      font-weight: bold;
-    }
-  </style>
-
 
 </body>
 

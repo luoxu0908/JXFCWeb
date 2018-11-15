@@ -3,6 +3,7 @@ layout: noNav
 name: Foundation For Sites
 ---
 
+
 <div class="grid-container">
       <div class="grid-x grid-margin-x">
             <h3><span class="FXBT" data="true">凤城一路 杰信花园 两室两厅一卫 近地铁口 有证可按揭</span></h3>
@@ -13,11 +14,10 @@ name: Foundation For Sites
                   <div class="orbit" role="region" aria-label="Favorite Space Pictures">
                         <div class="orbit-wrapper">
                               <div class="orbit-controls">
-                                    <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
-                                    <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
+                                    <button class="orbit-previous"></button>
+                                    <button class="orbit-next"></button>
                               </div>
                               <ul class="orbit-container">
-                                   
                                     <li class="orbit-slide">
                                           <figure class="orbit-figure">
                                                 <img class="orbit-image" src="assets/img/2.jpg" alt="Space">
@@ -142,14 +142,13 @@ name: Foundation For Sites
       </div>
       <hr>
 </div>
-
 <style>
       .orbit-image {
             min-height: 370px;
       }
 </style>
 <script>
-       
+
       $(function () {
             GetDetails();
       });
@@ -175,16 +174,16 @@ name: Foundation For Sites
                               $("." + cla).html(Row[cla] || '');
                         });
                         if (Row.ImageList) {
-                              var images = Row.ImageList.split(";"); var html = "",orhtm="";
+                              var images = Row.ImageList.split(";"); var html = "", orhtm = "";
                               for (let index = 0; index < images.length, images[index]; index++) {
-                                    if(index==0){
-                                          orhtm+='<li class="is-active orbit-slide"><figure class="orbit-figure"><img class="orbit-image" src="http://web.tool8.cc/UploadImages/Temp/' + images[index] + '" alt="Space"></figure></li>';
+                                    if (index == 0) {
+                                          orhtm += '<li class="is-active orbit-slide"><figure class="orbit-figure"><img class="orbit-image"  src="http://web.tool8.cc/UploadImages/Temp/' + images[index] + '" alt="Space"></figure></li>';
                                     }
-                                    else  {
-                                          orhtm+='<li class="orbit-slide"><figure class="orbit-figure"><img class="orbit-image" src="http://web.tool8.cc/UploadImages/Temp/' + images[index] + '" alt="Space"></figure></li>';
+                                    else {
+                                          orhtm += '<li class="orbit-slide"><figure class="orbit-figure"><img class="orbit-image" src="http://web.tool8.cc/UploadImages/Temp/' + images[index] + '" alt="Space"></figure></li>';
                                     }
-                                  
-                                    html += '<div class="cell"><img class="thumbnail" src="http://web.tool8.cc/UploadImages/Temp/' + images[index] + '"></div>';
+
+                                    html += '<div class="cell"><img class="thumbnail" src="http://web.tool8.cc/UploadImages/Temp/' + images[index] + '"  data-lightbox="'+images[index].split("/"[1])+'"></div>';
                               }
                               $("#HuXingTu").html(html);
                               $('.orbit-container').html(orhtm);

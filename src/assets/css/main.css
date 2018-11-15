@@ -1,0 +1,82 @@
+body {
+    background-color: #f8f8f8;
+}
+
+* {
+    font-family: '微软雅黑';
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+    font-family: '微软雅黑' !important;
+}
+
+a {
+    color: #000 !important;
+    outline: none;
+}
+
+#topMenu {
+    font-size: 0.75rem;
+    z-index: 555;
+}
+
+    #topMenu a {
+        padding: 0.7rem 0.5rem;
+        text-transform: uppercase;
+    }
+
+        #topMenu a:hover {
+            color: #FF552E !important;
+        }
+
+#navMenu {
+    border-bottom: 1px solid #cccccc;
+    background-color: #ff6700 !important;
+    box-shadow: 0 0 5PX #cccccc;
+    z-index: 666;
+}
+
+    #navMenu .top-bar {
+        background-color: #ff6700;
+        height: 42px;
+        line-height: 42px;
+    }
+
+#mainNavigation {
+    position: relative;
+    font-size: 1.01rem;
+}
+
+#navMenu .menu {
+    background-color: #ff6700 !important;
+    color: #000;
+    position: absolute;
+    width: 100%;
+    top: 0;
+}
+
+#navMenu a {
+    color: #fff !important;
+}
+
+#navMenu li:hover {
+    background: red;
+}
+
+.top-bar {
+    padding: 0;
+}
+
+h5 {
+    font-weight: bold;
+}
+
+.tabs-title > a {
+    font-size: 0.95rem;
+}
+.orbit-previous{
+    background:url(../img/prev.png);height: 50px;background-position:-20px 0px;background-repeat: no-repeat;
+}
+.orbit-next{
+    background:url(../img/next.png);height: 50px;background-position:0px 0px;background-repeat: no-repeat;
+}
