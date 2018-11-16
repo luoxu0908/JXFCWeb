@@ -237,12 +237,12 @@ meta-title: Index
           if (Rows.length > 0) {
             var html = '<table class="unstriped hover">';
             for (let index = 0; index < Rows.length; index++) {
-              html += '<tr><a href="details.html?ID=' + Rows[index].ID + '" target="_blank">';
-              html += '<td>' + Rows[index].Description + '</td>';
+              html += '<tr>';
+              html += '<td <a href="details.html?ID=' + Rows[index].ID + '" target="_blank">>' + Rows[index].Description + '</a></td>';
               html += ' <td>' + Rows[index].HouseLevelDetail + '</td>';
               html += ' <td>' + "77.55平" + '</td>';
               html += ' <td>' + Rows[index].FCZJ + '万</td>';
-              html += "</a></tr>";
+              html += "</tr>";
             }
             html += "</table>";
             $("#" + Contain).html(html);

@@ -2,7 +2,7 @@
 layout: noNav
 ---
 
-
+<hr>
 <div class="grid-container" style="opacity:0">
       <div class="grid-x grid-margin-x">
             <h3><span class="FXBT" data="true">凤城一路 杰信花园 两室两厅一卫 近地铁口 有证可按揭</span></h3>
@@ -11,30 +11,16 @@ layout: noNav
       <div class="grid-x grid-margin-x">
             <div class="cell medium-6  small-12" style="min-height:400px;overflow: hidden;">
                   <div class="orbit" role="region" aria-label="Favorite Space Pictures">
-                        <div class="orbit-wrapper">
-                              <div class="orbit-controls">
+                        <div class="orbit-wrapper" style="height:370px;" >
+                              <div class="orbit-controls" >
                                     <button class="orbit-previous"></button>
                                     <button class="orbit-next"></button>
                               </div>
                               <ul class="orbit-container">
                                     <li class="orbit-slide">
-                                          <figure class="orbit-figure">
-                                                <img class="orbit-image" src="assets/img/2.jpg" alt="Space">
-                                                <!-- <figcaption class="orbit-caption">Lets Rocket!</figcaption> -->
-                                          </figure>
+                                          <img class="orbit-image" src="assets/img/loading.gif" style="height:370px;" >
                                     </li>
-                                    <li class="orbit-slide">
-                                          <figure class="orbit-figure">
-                                                <img class="orbit-image" src="assets/img/3.jpg" alt="Space">
-                                                <!-- <figcaption class="orbit-caption">Encapsulating</figcaption> -->
-                                          </figure>
-                                    </li>
-                                    <li class="orbit-slide">
-                                          <figure class="orbit-figure">
-                                                <img class="orbit-image" src="assets/img/4.jpg" alt="Space">
-                                                <!-- <figcaption class="orbit-caption">Outta This World</figcaption> -->
-                                          </figure>
-                                    </li>
+
                               </ul>
                         </div>
 
@@ -178,16 +164,16 @@ layout: noNav
                               var images = Row.ImageList.split(";"); var html = "", orhtm = "";
                               for (let index = 0; index < images.length, images[index]; index++) {
                                     if (index == 0) {
-                                          orhtm += '<li class="is-active orbit-slide"><figure class="orbit-figure"><img class="orbit-image"  src="../../../UploadImages/Temp/' + images[index] + '" alt="Space"></figure></li>';
+                                          orhtm += '<li class="is-active orbit-slide"><figure class="orbit-figure"><img class="orbit-image"  src="../../../UploadImages/Temp/' + images[index] + '" alt="图片无法加载"></figure></li>';
                                     }
                                     else {
-                                          orhtm += '<li class="orbit-slide"><figure class="orbit-figure"><img class="orbit-image" src="../../../UploadImages/Temp/' + images[index] + '" alt="Space"></figure></li>';
+                                          orhtm += '<li class="orbit-slide"><figure class="orbit-figure"><img class="orbit-image" src="../../../UploadImages/Temp/' + images[index] + '" alt="图片无法加载"></figure></li>';
                                     }
 
                                     html += '<div class="cell"><img class="thumbnail" src="../../../UploadImages/Temp/' + images[index] + '"  data-lightbox="' + images[index].split("/"[1]) + '"></div>';
                               }
                               $("#HuXingTu").html(html);
-                              $('.orbit-container').html(orhtm);
+                             $('.orbit-container').html(orhtm);
                               var elem = new Foundation.Orbit($(".orbit"));
                         }
                   });
