@@ -1,10 +1,9 @@
 ---
 layout: noNav
-name: Foundation For Sites
 ---
 
 
-<div class="grid-container">
+<div class="grid-container" style="opacity:0">
       <div class="grid-x grid-margin-x">
             <h3><span class="FXBT" data="true">凤城一路 杰信花园 两室两厅一卫 近地铁口 有证可按揭</span></h3>
       </div>
@@ -82,13 +81,16 @@ name: Foundation For Sites
       <div class="grid-x grid-margin-x">
             <div class="medium-6 cell small-12">
                   <h3>核心卖点</h3>
-                  <p class="pic-desc-word">品胜房产刘佳为您服务 <br>楼盘介绍：<br> 1.装修优势：中等装修，业主本人很少居住，保持的很干净 <br>2.楼层优势：中间楼层，舒适便利
-                        <br>3.产权优势：商品房，证过两年，安全交易，可按揭 <br>4.商业情况：人人乐，苏宁电器，雅荷花园等。 <br>5.交通情况：出门有30余路公交车，地铁二号线，交通方便</p>
+                  <p class="pic-desc-word"><span class="CoreSellingPoint" data="true">>品胜房产刘佳为您服务 <br>楼盘介绍：<br>
+                              1.装修优势：中等装修，业主本人很少居住，保持的很干净 <br>2.楼层优势：中间楼层，舒适便利
+                              <br>3.产权优势：商品房，证过两年，安全交易，可按揭 <br>4.商业情况：人人乐，苏宁电器，雅荷花园等。 <br>5.交通情况：出门有30余路公交车，地铁二号线，交通方便
+                        </span>
+                  </p>
             </div>
             <div class="medium-6 cell small-12">
                   <h3>业主心态</h3>
                   <p class="pic-desc-word">
-                        业主本人不在此居住因此需要出售，从未出租保持的非常干净
+                        <span class="OwnerMentality" data="true"></span>
                   </p>
             </div>
       </div>
@@ -99,16 +101,13 @@ name: Foundation For Sites
             <div class="medium-6 cell small-12">
                   <h3>小区配套</h3>
                   <p class="pic-desc-word">
-                        1.幼儿园： 雅荷幼儿园，新荷幼儿园，雅荷智能幼儿园，锦园国际幼稚园，明园小区幼儿园，上林呀un幼儿园，香樟园幼儿园<br> 2.中小学：
-                        西安中学、西安外国语学校、南康小学、西铁大明宫小学、锦园小学、锦园中学 <br>3.大学：西安外国语学校<br> 4.商场： 家乐 崇尚百货
-                        人人乐、沃尔玛、世纪金花、万达广场、华润万家、苏宁电器、国美电器、华东服饰广场、西安裘皮广场<br>5.邮局：中国邮政 <br>6.银行：工商银行、中国光大银行
-                        ,中行、建行、浦发、交通银行、农业银行、中信银行、华夏银行.医院：长安医院 凤城医院
+                        <span class="VillageMatch" data="true"></span>
                   </p>
             </div>
             <div class="medium-6 cell small-12">
                   <h3>服务介绍</h3>
                   <p class="pic-desc-word">
-                        收取服务费：最高5250元(≤0.5%)<br>你好，我是品胜房产的一名资深经纪人，我们为您承诺阳光操作不吃差价，我们秉着诚挚与热情的心态为您用心选购一套适合您的好房子，希望您能给我一次为您选家的机会。品德为本，服务致胜！
+                              <span class="ServiceIntroduction" data="true"></span>
                   </p>
             </div>
       </div>
@@ -145,13 +144,18 @@ name: Foundation For Sites
 <style>
       .orbit-image {
             min-height: 370px;
+            max-height: 370px;
       }
 </style>
 <script>
-
+      NProgress.start();
       $(function () {
-            GetDetails();
-      });
+            $.when(GetDetails()).then(function () {
+                  $('.grid-container').css("opacity", 1);
+                  NProgress.done();
+            });
+      })
+
       function GetDetails() {
             var data = {
                   'ID': parseQS().ID
@@ -183,7 +187,7 @@ name: Foundation For Sites
                                           orhtm += '<li class="orbit-slide"><figure class="orbit-figure"><img class="orbit-image" src="http://web.tool8.cc/UploadImages/Temp/' + images[index] + '" alt="Space"></figure></li>';
                                     }
 
-                                    html += '<div class="cell"><img class="thumbnail" src="http://web.tool8.cc/UploadImages/Temp/' + images[index] + '"  data-lightbox="'+images[index].split("/"[1])+'"></div>';
+                                    html += '<div class="cell"><img class="thumbnail" src="http://web.tool8.cc/UploadImages/Temp/' + images[index] + '"  data-lightbox="' + images[index].split("/"[1]) + '"></div>';
                               }
                               $("#HuXingTu").html(html);
                               $('.orbit-container').html(orhtm);

@@ -80,3 +80,83 @@ h5 {
 .orbit-next{
     background:url(../img/next.png);height: 50px;background-position:0px 0px;background-repeat: no-repeat;
 }
+
+.tabs {
+  border-width: 0 0 1px 0;
+  border-color: #ff6700;
+  margin-top: 5px;
+}
+
+.tabs-title>a:focus,
+.tabs-title>a[aria-selected="true"] {
+  background-color: #ff6700;
+  color: white !important;
+}
+
+table {
+  font-size: 0.95rem;
+}
+
+.tabs-title>a {
+  padding: 0.5rem 1rem;
+}
+
+.orbit-image {
+  min-height: 240px;
+}
+
+.orbit-bullets {
+  position: absolute;
+  z-index: 100;
+  bottom: 0;
+  left: 40%;
+}
+
+.orbit-bullets button {
+  width: 0.8rem;
+  height: 0.8rem;
+}
+
+.callout a {
+  font-size: 0.85rem;
+}
+
+.callout img {
+  transition: all 0.5s ease 0s;
+  min-height: 180px;
+}
+
+.callout img:hover {
+  transform: scale(1.1);
+
+}
+
+.listContent {
+  position: relative;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.hollow{
+    margin-right: 1rem;margin-top:-1rem;
+    transition: all ease 0.5s !important;
+    padding: 0.50rem 0.75rem;
+    font-size:0.75rem;
+} 
+.hollow:hover{
+  border-color:#ff6700 !important;
+
+}
+.grid-x{
+    margin-top: 0.5rem;
+}
+footer{
+    background-color:#1d1d1d; 
+    width: 100%;color:white;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    margin-top:1.5rem;
+    position: absolute;
+    left: 0;
+}
