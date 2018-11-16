@@ -164,7 +164,7 @@ meta-title: Index
      NProgress.start();
     $(function () {
       $.when(GetTops('', "panel1d"), GetTableData("", "", "panel21")).then(function(){
-        $('.grid-container').css("opacity",1).fadeIn();
+        $('.grid-container').css("opacity",1);
         NProgress.done();  
       })
       GetTableData("", "", "panel31");GetTableData("", "", "panel41")

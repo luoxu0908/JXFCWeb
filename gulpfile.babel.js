@@ -12,7 +12,7 @@ import fs from 'fs';
 import webpackStream from 'webpack-stream';
 import webpack2 from 'webpack';
 import named from 'vinyl-named';
-import uglify from 'gulp-uglify'
+// import uglify from 'gulp-uglify'
 
 // Load all Gulp plugins into one variable
 const $ = plugins();
@@ -68,7 +68,7 @@ function styleGuide(done) {
 // Compile Sass into CSS
 // In production, the CSS is compressed
 function sass() {
-  return gulp.src('src/assets/scss/app.scss').pipe($.sourcemaps.init()).pipe($.sass({includePaths: PATHS.sass, outputStyle: 'compact'}).on('error', $.sass.logError)).pipe($.autoprefixer({browsers: COMPATIBILITY}))
+  return gulp.src('src/assets/scss/app.scss').pipe($.sass({includePaths: PATHS.sass, outputStyle: 'compact'}).on('error', $.sass.logError)).pipe($.autoprefixer({browsers: COMPATIBILITY}))
   // Comment in the pipe below to run UnCSS in production
   //.pipe($.if(PRODUCTION, $.uncss(UNCSS_OPTIONS)))
     .pipe($.if (PRODUCTION, $.cleanCss({compatibility: 'ie9'})) ).pipe($.if (!PRODUCTION, $.sourcemaps.write()) ).pipe(gulp.dest(PATHS.dist + '/assets/css')).pipe(browser.reload({stream: true}));
@@ -91,12 +91,10 @@ function sass() {
     // Combine JavaScript into one file
     // In production, the file is minified
     function javascript() {
-      gulp.src('src/assets/js/single-js/*').pipe(gulp.dest(PATHS.dist + '/assets/js/single-js'));
+      gulp.src('src/assets/js/single-js/*').pipe($.uglify()).pipe(gulp.dest(PATHS.dist + '/assets/js/single-js'));
       return gulp.src(PATHS.entries).pipe(named()).pipe($.sourcemaps.init()).pipe(webpackStream(webpackConfig, webpack2)).pipe($.if (PRODUCTION, $.uglify().on('error', e => {
         console.log(e);
       })) ).pipe($.if (!PRODUCTION, $.sourcemaps.write()) ).pipe(gulp.dest(PATHS.dist + '/assets/js'));
-
-
         }
 
         // Copy images to the "dist" folder

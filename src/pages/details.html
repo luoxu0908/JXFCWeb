@@ -107,7 +107,7 @@ layout: noNav
             <div class="medium-6 cell small-12">
                   <h3>服务介绍</h3>
                   <p class="pic-desc-word">
-                              <span class="ServiceIntroduction" data="true"></span>
+                        <span class="ServiceIntroduction" data="true"></span>
                   </p>
             </div>
       </div>
@@ -149,13 +149,10 @@ layout: noNav
 </style>
 <script>
       NProgress.start();
-      $(function () {
-            $.when(GetDetails()).then(function () {
-                  $('.grid-container').css("opacity", 1);
-                  NProgress.done();
-            });
-      })
-
+      $.when(GetDetails()).then(function () {
+            $('.grid-container').css("opacity", 1);
+            NProgress.done();
+      });
       function GetDetails() {
             var data = {
                   'ID': parseQS().ID
@@ -181,13 +178,13 @@ layout: noNav
                               var images = Row.ImageList.split(";"); var html = "", orhtm = "";
                               for (let index = 0; index < images.length, images[index]; index++) {
                                     if (index == 0) {
-                                          orhtm += '<li class="is-active orbit-slide"><figure class="orbit-figure"><img class="orbit-image"  src="http://web.tool8.cc/UploadImages/Temp/' + images[index] + '" alt="Space"></figure></li>';
+                                          orhtm += '<li class="is-active orbit-slide"><figure class="orbit-figure"><img class="orbit-image"  src="../../../UploadImages/Temp/' + images[index] + '" alt="Space"></figure></li>';
                                     }
                                     else {
-                                          orhtm += '<li class="orbit-slide"><figure class="orbit-figure"><img class="orbit-image" src="http://web.tool8.cc/UploadImages/Temp/' + images[index] + '" alt="Space"></figure></li>';
+                                          orhtm += '<li class="orbit-slide"><figure class="orbit-figure"><img class="orbit-image" src="../../../UploadImages/Temp/' + images[index] + '" alt="Space"></figure></li>';
                                     }
 
-                                    html += '<div class="cell"><img class="thumbnail" src="http://web.tool8.cc/UploadImages/Temp/' + images[index] + '"  data-lightbox="' + images[index].split("/"[1]) + '"></div>';
+                                    html += '<div class="cell"><img class="thumbnail" src="../../../UploadImages/Temp/' + images[index] + '"  data-lightbox="' + images[index].split("/"[1]) + '"></div>';
                               }
                               $("#HuXingTu").html(html);
                               $('.orbit-container').html(orhtm);
