@@ -207,7 +207,7 @@ meta-title: Index
             var html = '<div class="grid-x grid-margin-x">';
             for (let index = 0; index < Rows.length; index++) {
               if (Rows[index].ImageSrc) {
-                html += ' <div class="cell medium-3 small-6"><div class="callout" data-equalizer-watch><a href="details.html?ID=' + Rows[index].ID + '" target="_blank"><div class="listContent"><img src="' + Rows[index].ImageSrc + '"></div>' + Rows[index].Description + ' ' + Rows[index].HouseLevelDetail + ' ' + Rows[index].FCZJ + '万</a></div></div>'
+                html += ' <div class="cell medium-3 small-12"><div class="callout" data-equalizer-watch><a href="details.html?ID=' + Rows[index].ID + '" target="_blank"><div class="listContent"><img src="' + Rows[index].ImageSrc + '"></div>' + Rows[index].Description + ' ' + Rows[index].HouseLevelDetail + ' ' + Rows[index].FCZJ + '万</a></div></div>'
               }
             }
             html += "</div>";
@@ -238,9 +238,9 @@ meta-title: Index
             var html = '<table class="unstriped hover">';
             for (let index = 0; index < Rows.length; index++) {
               html += '<tr>';
-              html += '<td <a href="details.html?ID=' + Rows[index].ID + '" target="_blank">>' + Rows[index].Description + '</a></td>';
+              html += '<td> <a href="details.html?ID=' + Rows[index].ID + '" target="_blank">' + Rows[index].Description + '</a></td>';
               html += ' <td>' + Rows[index].HouseLevelDetail + '</td>';
-              html += ' <td>' + "77.55平" + '</td>';
+              html += ' <td>' + Rows[index].FCMJ + '平</td>';
               html += ' <td>' + Rows[index].FCZJ + '万</td>';
               html += "</tr>";
             }
