@@ -154,7 +154,7 @@ name: Foundation For Sites
       });
       function GetDetails() {
             var data = {
-                  'ID': 'SF-YL-000059'
+                  'ID': parseQS().ID
             };
             $.ajax({
                   url: apiSrc + "YL1.GetHouseTransaction.json",

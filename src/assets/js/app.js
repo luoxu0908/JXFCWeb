@@ -9,7 +9,7 @@ import Foundation from 'foundation-sites';
 //import './lib/foundation-explicit-pieces';
 import 'tablesaw/dist/tablesaw.jquery';
 import libs from './lib/dependancies';
-import Master from './lib/master'
+// import Master from './lib/master'
 window.libs = libs;
 
 $(document).foundation();
@@ -78,9 +78,7 @@ $(".content-carousel").slick({
 
 // tablesaw table plugin
 $(function() {
-
   $(document).foundation().trigger('enhance.tablesaw');
-  window.Master = new Master();
 });
 
 var TablesawConfig = {
