@@ -160,3 +160,18 @@ footer{
     position: absolute;
     left: 0;
 }
+.stat{font-size:1.5rem !important;}
+.media-object-section {
+    color: #333;
+}
+.media-object-section div{
+    padding: .1rem 0;
+}
+.Img150110{
+ height:60px;
+ width: 100px
+}
+h5{font-size:1.0rem;}
+div{
+    font-size:0.85rem;
+}
