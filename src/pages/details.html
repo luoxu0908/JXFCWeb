@@ -11,14 +11,14 @@ layout: noNav
       <div class="grid-x grid-margin-x">
             <div class="cell medium-6  small-12" style="min-height:400px;overflow: hidden;">
                   <div class="orbit" role="region" aria-label="Favorite Space Pictures">
-                        <div class="orbit-wrapper" style="height:370px;" >
-                              <div class="orbit-controls" >
+                        <div class="orbit-wrapper" style="height:370px;">
+                              <div class="orbit-controls">
                                     <button class="orbit-previous"></button>
                                     <button class="orbit-next"></button>
                               </div>
                               <ul class="orbit-container">
                                     <li class="orbit-slide">
-                                          <img class="orbit-image" src="assets/img/loading.gif" style="height:370px;" >
+                                          <img class="orbit-image" src="assets/img/loading.gif" style="height:370px;">
                                     </li>
 
                               </ul>
@@ -65,7 +65,7 @@ layout: noNav
       </div>
       <hr>
       <div class="grid-x grid-margin-x">
-            <div class="medium-6 cell small-12">
+            <div class="medium-8 cell small-12">
                   <h3>核心卖点</h3>
                   <p class="pic-desc-word"><span class="CoreSellingPoint" data="true">>品胜房产刘佳为您服务 <br>楼盘介绍：<br>
                               1.装修优势：中等装修，业主本人很少居住，保持的很干净 <br>2.楼层优势：中间楼层，舒适便利
@@ -73,33 +73,38 @@ layout: noNav
                         </span>
                   </p>
             </div>
-            <div class="medium-6 cell small-12">
+
+      </div>
+     
+      <div class="grid-x grid-margin-x">
+            <div class="medium-8 cell small-12">
                   <h3>业主心态</h3>
                   <p class="pic-desc-word">
                         <span class="OwnerMentality" data="true"></span>
                   </p>
             </div>
+                
       </div>
-      <hr>
-
+      
       <div class="grid-x grid-margin-x">
 
-            <div class="medium-6 cell small-12">
+            <div class="medium-8 cell small-12">
                   <h3>小区配套</h3>
                   <p class="pic-desc-word">
                         <span class="VillageMatch" data="true"></span>
                   </p>
-            </div>
-            <div class="medium-6 cell small-12">
+            </div>            
+      </div>
+   
+      <div class="grid-x grid-margin-x">
+            <div class="medium-8 cell small-12">
                   <h3>服务介绍</h3>
                   <p class="pic-desc-word">
                         <span class="ServiceIntroduction" data="true"></span>
                   </p>
             </div>
       </div>
-
       <hr>
-
       <div class="row column">
             <ul class="vertical medium-horizontal menu expanded text-center">
                   <li><a href="#">
@@ -173,7 +178,7 @@ layout: noNav
                                     html += '<div class="cell"><img class="thumbnail" src="../../../UploadImages/Temp/' + images[index] + '"  data-lightbox="' + images[index].split("/"[1]) + '"></div>';
                               }
                               $("#HuXingTu").html(html);
-                             $('.orbit-container').html(orhtm);
+                              $('.orbit-container').html(orhtm);
                               var elem = new Foundation.Orbit($(".orbit"));
                         }
                   });
