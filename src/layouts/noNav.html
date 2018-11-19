@@ -17,51 +17,10 @@
 </head>
 
 <body >
-    <script src="{{root}}assets/js/app.js"></script>
-    <script src="{{root}}assets/js/single-js/Master.js"></script>
-    <script src="{{root}}assets/js/single-js/nprogress.js"></script>
-  <!-- Start Top Bar -->
-  <div style="border-top:1px solid #ccc;border-bottom:1px solid #ccc">
-    <div class="grid-container">
-      <div class="grid-x grid-margin-x">
-        <div class="medium-6 cell small-3">
-          <ul class="menu align-left " id="topMenu">
-            <li><a href="index.html" target="_blank"><i class="fa fa-home" aria-hidden="true"></i> 首页</a></li>
-          </ul>
-        </div>
-        <div class="medium-6 cell small-9">
-          <ul class="menu align-right" id="topMenu">
-            <li><a href="http://web.tool8.cc/JXFC/login.html" target="_blank">登录 / 注册</a></li>
-            <li><a href="http://web.tool8.cc/JXFC/login.html" target="_blank">个人中心</a></li>
-            <li><a href="# target="_blank">帮助中心</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-  <br>
-  <div class="grid-container">
-    <div class=" grid-x grid-margin-x">
-      <div class="medium-3 cell small-4">
-        <img src="assets/img/logo.jpg" alt="" style="width:60%">
-      </div>
-      <div class="medium-7 cell small-8">
-        <div class="grid-x" style="border:2px solid #FF552E;height: 40px;">
-          <div class="cell medium-10 small-9">
-            <input type="text" style="border:0;height:35px;">
-          </div>
-          <div class="cell medium-2 small-3" style="text-align:center;background-color:#FF552E;height:36px;line-height: 36px;color:white;">
-            <i class="fa   fa-search"></i> 搜房源
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <br>
-  <br>
-
-  <div style="margin-top:-10px;" id="Body">{{> body}}</div>
-
+  {{> main-nav}}<br>
+  {{> search}}
+   {{> sub-nav}}
+  <div  id="Body">{{> body}}</div>
 </body>
 
 </html>

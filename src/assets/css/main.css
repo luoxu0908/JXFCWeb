@@ -1,5 +1,5 @@
 body {
-    background-color: #f8f8f8;
+    background-color: white;
 }
 
 * {
@@ -46,7 +46,7 @@ a {
     position: relative;
     font-size: 1.01rem;
 }
-
+#mainNavigation li{ height: 43px;}
 #navMenu .menu {
     background-color: #ff6700 !important;
     color: #000;
@@ -171,7 +171,4 @@ footer{
  height:60px;
  width: 100px
 }
-h5{font-size:1.0rem;}
-div{
-    font-size:0.85rem;
-}
+
