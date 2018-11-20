@@ -1,0 +1,66 @@
+<style>
+    .rightButton {
+        height: 45px;
+    }
+
+    .rightButton:hover {
+        background: red;
+        cursor: pointer;
+
+    }
+
+   .GOTOTOP .fa {
+        color: white;
+        font-size:1.5rem;
+        padding-top: 0.5rem;
+    }
+
+    .rightButton span {
+        font-size: 0.78rem;
+        color: white;
+        word-wrap: break-word;
+        height: 45px;
+        width: 45px;
+        padding: 0.2rem;
+        display: none;
+    }
+
+    .GOTOTOP {
+        position: fixed;
+        right: 15px;
+        width: 45px;
+        height: 90px;
+        background: #000;
+        color: white;
+        font-size: 1.5rem;
+        text-align: center;
+        transition: all 0.5s;
+        bottom: 15px;
+
+    }
+    .btn2{
+        border-top:1px solid white;
+    }
+</style>
+<div class="GOTOTOP">
+    <div class="rightButton btn1" id="scroolTop"><i class="fa fa-qq" aria-hidden="true"></i>
+        <a href="tencent://message/?Site=baidu.com&uin=599212711&Menu=yes"><span>打开QQ</span></a>
+        
+    </div>
+    <div class="rightButton btn2" id="scroolTop"><i class="fa fa-angle-up"></i>
+        <a href="#topMenu" data-smooth-scroll><span>回到<br>顶部</span></a>
+    </div>
+</div>
+<script>
+    $(function () {
+        $('.rightButton').hover(function () {
+            $(this).find('i').hide();
+            $(this).find('span').show().css('display', 'block');
+
+        }).mouseleave(function () {
+            $(this).find('i').show(); $(this).find('span').hide();
+        });
+
+    });
+
+</script>
