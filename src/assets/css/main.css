@@ -25,7 +25,7 @@ a {
         text-transform: uppercase;
     }
 
-        #topMenu a:hover {
+         a:hover {
             color: #FF552E !important;
         }
 
@@ -166,9 +166,24 @@ footer{
 }
 .media-object-section div{
     padding: .1rem 0;
+    color:#777;
 }
 .Img150110{
- height:60px;
- width: 100px
+ height:110px;
+ width: 147px;
 }
-
+.baseinfo{
+    margin-bottom:13px;line-height:14px;
+}
+.MoveIcon{
+    -webkit-animation: nprogress-spinner 700ms linear infinite;
+          animation: nprogress-spinner 700ms linear infinite;
+}
+@-webkit-keyframes nprogress-spinner {
+    0%   { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  @keyframes nprogress-spinner {
+    0%   { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }

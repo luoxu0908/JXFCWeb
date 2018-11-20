@@ -2,6 +2,7 @@
 layout: main
 meta-title: Index
 ---
+<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
 <div class="grid-container" style="opacity:0">
   <ul class="tabs" data-deep-link="true" data-update-history="true" data-deep-link-smudge="true"
     data-deep-link-smudge-delay="500" id="deeplinked-tabs">
@@ -44,13 +45,13 @@ meta-title: Index
             <li class="is-active orbit-slide">
               <figure class="orbit-figure">
                 <img class="orbit-image" src="assets/img/1.jpg" alt="Space">
-              
+
               </figure>
             </li>
             <li class="orbit-slide">
               <figure class="orbit-figure">
                 <img class="orbit-image" src="assets/img/2.jpg" alt="Space">
-              
+
               </figure>
             </li>
           </ul>
@@ -92,13 +93,13 @@ meta-title: Index
             <li class="is-active orbit-slide">
               <figure class="orbit-figure">
                 <img class="orbit-image" src="assets/img/1.jpg" alt="Space">
-              
+
               </figure>
             </li>
             <li class="orbit-slide">
               <figure class="orbit-figure">
                 <img class="orbit-image" src="assets/img/2.jpg" alt="Space">
-                
+
               </figure>
             </li>
           </ul>
@@ -140,13 +141,13 @@ meta-title: Index
             <li class="is-active orbit-slide">
               <figure class="orbit-figure">
                 <img class="orbit-image" src="assets/img/1.jpg" alt="Space">
-              
+
               </figure>
             </li>
             <li class="orbit-slide">
               <figure class="orbit-figure">
                 <img class="orbit-image" src="assets/img/2.jpg" alt="Space">
-              
+
               </figure>
             </li>
           </ul>
@@ -160,13 +161,14 @@ meta-title: Index
     </div>
   </div>
   <script>
-     NProgress.start();
+    SaveIP();
+    NProgress.start();
     $(function () {
-      $.when(GetTops('', "panel1d"), GetTableData("", "", "panel21")).then(function(){
-        $('.grid-container').css("opacity",1);
-        NProgress.done();  
+      $.when(GetTops('', "panel1d"), GetTableData("", "", "panel21")).then(function () {
+        $('.grid-container').css("opacity", 1);
+        NProgress.done();
       })
-      GetTableData("", "", "panel31");GetTableData("", "", "panel41")
+      GetTableData("", "", "panel31"); GetTableData("", "", "panel41")
       $(".tabs li").click(function () {
         $(this).siblings().find("a").removeAttr("aria-selected");
         $(this).find("a").attr("aria-selected", 'true');
@@ -210,11 +212,29 @@ meta-title: Index
               }
             }
             html += "</div>";
-            $("#" + contain).html(html); 
+            $("#" + contain).html(html);
           }
         });
     }
-
+    function SaveIP() {
+      var data = {
+        'IPAdress': returnCitySN["cip"],
+        'City': returnCitySN["cname"]
+      };
+      $.ajax({
+        url: apiSrc + "YL1.SaveIPAddress.json",
+        method: "POST",
+        dataType: "json",
+        xhrFields: { withCredentials: true },
+        data: {
+          'data': JSON.stringify(data),
+          'WebPartKey': '021cb7cca70748ff89795e3ad544d5eb',
+          'ReqGUID': 'b4bbedbf-e591-4b7a-ad20-101f8f656277'
+        }
+      })
+        .done(function (data) {
+        });
+    }
     function GetTableData(Type, SubType, Contain) {
       var data = {
         'Type': SubType
@@ -249,5 +269,5 @@ meta-title: Index
         });
     }
   </script>
- {{> footer}}
+  {{> footer}}
 </div>

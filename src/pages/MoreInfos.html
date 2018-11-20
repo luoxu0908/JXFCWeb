@@ -4,18 +4,13 @@ layout: noNav
 
 <style>
       div {
-            font-size: 0.85rem;
+            font-size: 1rem;
       }
-
-      .cell img {
-            height: 110px;
-            width: 100%
+      table tr{
+            cursor: pointer;
       }
-      #container{
-            border:1px solid #ccc;
-      }
-      #container .cell{
-            padding:1rem 0;
+      table tr:hover{
+            color:#777;
       }
 </style>
 <hr>
@@ -23,55 +18,67 @@ layout: noNav
       <article class="grid-container">
             <nav aria-label="You are here:" role="navigation">
                   <ul class="breadcrumbs">
-                        <li><a href="index.html">首页</a></li>
-                        <li><a href="index.html">房产</a></li>
-                        <li> <span class="show-for-sr">Current: </span> 更多</li>
+                        <li><a href="index.html">
+                                    <fa class="fa fa-home"></fa> 首页
+                              </a></li>
+                        <li><a href="index.html">
+                                    <fa class="fa fa-building"></fa> 房产
+                              </a></li>
+                        <li> <span class="show-for-sr">Current: </span>
+                              <fa class="fa fa-map-marker"></fa> 更多
+                        </li>
                   </ul>
             </nav>
       </article>
 </div>
 <div class="grid-container" style="opacity:0">
       <article class="grid-container">
-            <div class="grid-x grid-margin-x small-up-3 medium-up-4 large-up-5" id="container">
-                  <div class="cell"><img src="http://web.tool8.cc/UploadImages/Temp/491be172-ee4f-4492-a65c-1ffb7f4e861c/1.jpg"
-                              alt="image for article">后稷·御景苑 1室 1 厅 1 卫 55万</div>
-                  <div class="cell"><img src="http://web.tool8.cc/UploadImages/Temp/491be172-ee4f-4492-a65c-1ffb7f4e861c/1.jpg"
-                              alt="image for article">后稷·御景苑 1室 1 厅 1 卫 55万</div>
-                  <div class="cell"><img src="http://web.tool8.cc/UploadImages/Temp/491be172-ee4f-4492-a65c-1ffb7f4e861c/1.jpg"
-                              alt="image for article">后稷·御景苑 1室 1 厅 1 卫 55万</div>
-                  <div class="cell"><img src="http://web.tool8.cc/UploadImages/Temp/491be172-ee4f-4492-a65c-1ffb7f4e861c/1.jpg"
-                              alt="image for article">后稷·御景苑 1室 1 厅 1 卫 55万</div>
-                  <div class="cell"><img src="http://web.tool8.cc/UploadImages/Temp/491be172-ee4f-4492-a65c-1ffb7f4e861c/1.jpg"
-                              alt="image for article">后稷·御景苑 1室 1 厅 1 卫 55万</div>
-                  <div class="cell"><img src="http://web.tool8.cc/UploadImages/Temp/491be172-ee4f-4492-a65c-1ffb7f4e861c/1.jpg"
-                              alt="image for article">后稷·御景苑 1室 1 厅 1 卫 55万</div>
-                  <div class="cell"><img src="http://web.tool8.cc/UploadImages/Temp/491be172-ee4f-4492-a65c-1ffb7f4e861c/1.jpg"
-                              alt="image for article">后稷·御景苑 1室 1 厅 1 卫 55万</div>
-                  <div class="cell"><img src="http://web.tool8.cc/UploadImages/Temp/491be172-ee4f-4492-a65c-1ffb7f4e861c/1.jpg"
-                              alt="image for article">后稷·御景苑 1室 1 厅 1 卫 55万</div>
-                  <div class="cell"><img src="http://web.tool8.cc/UploadImages/Temp/491be172-ee4f-4492-a65c-1ffb7f4e861c/1.jpg"
-                              alt="image for article">后稷·御景苑 1室 1 厅 1 卫 55万</div>
-                  <div class="cell"><img src="http://web.tool8.cc/UploadImages/Temp/491be172-ee4f-4492-a65c-1ffb7f4e861c/1.jpg"
-                              alt="image for article">后稷·御景苑 1室 1 厅 1 卫 55万</div>
-                  <div class="cell"><img src="http://web.tool8.cc/UploadImages/Temp/491be172-ee4f-4492-a65c-1ffb7f4e861c/1.jpg"
-                              alt="image for article">后稷·御景苑 1室 1 厅 1 卫 55万</div>
-                  <div class="cell"><img src="http://web.tool8.cc/UploadImages/Temp/491be172-ee4f-4492-a65c-1ffb7f4e861c/1.jpg"
-                              alt="image for article">后稷·御景苑 1室 1 厅 1 卫 55万</div>
-                  <div class="cell"><img src="http://web.tool8.cc/UploadImages/Temp/491be172-ee4f-4492-a65c-1ffb7f4e861c/1.jpg"
-                              alt="image for article">后稷·御景苑 1室 1 厅 1 卫 55万</div>
-                 
-
+            <div class="grid-x grid-margin-x small-up-3 medium-up-4 large-up-5" >
+                  <table class="table unstriped hover" id="container">
+                              <tr>
+                                          <td style="width:170px;"><img class="Img150110" src="http://web.tool8.cc/UploadImages/Temp/2ecf8e3e-749b-4d78-8688-f4b2a1d365f9/n_v29f1a7af185854f2fa4c912c32dbb9a44.jpg"
+                                                      alt=""></td>
+                                          <td>
+                                                <h5>急售个人茂华商品房，54学区房精装修年底下本 <span class="badge warning">顶</span></h5>
+                                                <p class="baseinfo">
+                                                      <span>1室1厅1卫</span>
+                                                      <span>60㎡&nbsp;</span>
+                                                      <span>南</span>
+                                                      <span>高层(共30层)</span>
+                                                </p>
+                                                <p class="baseinfo">
+                                                      <span>
+                                                            茂华唐山中心
+                                                      </span>
+                                                </p>
+                                                <p class="baseinfo">
+                                                      <span>
+                                                            个人
+                                                            - 陈先生
+                                                      </span>
+                                                </p>
+                                          </td>
+                                          <td>
+                                                <h3 style="color:red;">55万</h3>
+                                                9166元/㎡
+                                          </td>
+                                          <td style="vertical-align:top"> 今天</td>
+                                          </a>
+                                    </tr>
+                  </table>
             </div>
       </article>
 
       <br>
-      <div style="text-align:center;"> <button class="button">加载更多</button></div>
+      <div style="text-align:center;"> <button class="button"><i class="fa fa-spinner MoveIcon"></i> 加载更多</button></div>
 </div>
 <script>
+      times = 1;
       NProgress.start();
       $.when(GetTops('', 'container')).then(function () {
             $('.grid-container').css("opacity", 1);
             NProgress.done();
+            $('#element').foundation('scrollToLoc', loc, options, callback);
 
       });
       function GetTops(type, contain) {
@@ -96,13 +103,28 @@ layout: noNav
                               var html = '';
                               for (let index = 0; index < Rows.length; index++) {
                                     if (Rows[index].ImageSrc) {
-                                          html += '<div class="cell"><img src="' + Rows[index].ImageSrc + '" alt="image for article">' + Rows[index].Description + ' ' + Rows[index].HouseLevelDetail + ' ' + Rows[index].FCZJ + '万</div>';
+                                          html += '<tr onclick="OpenLink(\''+Rows[index].ID+'\');return false;">';
+                                          html += '<td style="width:170px;"><img class="Img150110" src="' + Rows[index].ImageSrc + '"alt="' + Rows[index].Description + '"></td>';
+                                          html += '<td><h5>急售个人茂华商品房，54学区房精装修年底下本<span class="badge warning">顶</span></h5><p class="baseinfo"><span>' + Rows[index].HouseLevelDetail + '</span><span>' + Rows[index].FCMJ + '平&nbsp;</span><span>南北</span><span>高层(共30层)</span></p><p class="baseinfo"><span>' + Rows[index].Description + '</span></p><p class="baseinfo"><span>个人- 陈先生</span></p></td>';
+                                          html += '<td><h3 style="color:red;">' + Rows[index].FCZJ + '万</h3>9166元 /㎡</td > ';
+                                          html += '<td style="vertical-align:top">今天</td>';
+                                          html += '</tr>';
                                     }
                               }
-                           
-                              $("#" + contain).append(html);
+                              $("#" + contain).append(html); 
+
                         }
                   });
       }
-
+      $(window).scroll(function (e) {
+            var buttonTop = $(':button').offset().top;
+            var top = $(document).scrollTop() + $(window).height();
+            if (top >= buttonTop && top < buttonTop + 20) {
+               setTimeout(() => {GetTops('', 'container');
+               }, 1000);   
+            }
+      });
+      function OpenLink(ID){
+         window.location.href="details.html?ID="+ID;
+      }
 </script>
