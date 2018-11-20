@@ -1,7 +1,12 @@
 ---
 layout: noNav
 ---
-
+<style>
+            .orbit-image {
+                  min-height: 370px;
+                  max-height: 370px;
+            }
+      </style>
 <hr>
 <div class="grid-container" style="opacity:0">
       <div class="grid-x grid-margin-x">
@@ -64,6 +69,17 @@ layout: noNav
 
       </div>
       <hr>
+      <div class="grid-x grid-margin-x">
+                  <div class="medium-8 cell small-12">
+                        <h4>房产特色</h3>
+                        <p class="pic-desc-word"><span class="FCTS" data="true">>品胜房产刘佳为您服务 <br>楼盘介绍：<br>
+                                    1.装修优势：中等装修，业主本人很少居住，保持的很干净 <br>2.楼层优势：中间楼层，舒适便利
+                                    <br>3.产权优势：商品房，证过两年，安全交易，可按揭 <br>4.商业情况：人人乐，苏宁电器，雅荷花园等。 <br>5.交通情况：出门有30余路公交车，地铁二号线，交通方便
+                              </span>
+                        </p>
+                  </div>
+      
+            </div>
       <div class="grid-x grid-margin-x">
             <div class="medium-8 cell small-12">
                   <h4>核心卖点</h3>
@@ -132,12 +148,7 @@ layout: noNav
       </div>
       <hr>
 </div>
-<style>
-      .orbit-image {
-            min-height: 370px;
-            max-height: 370px;
-      }
-</style>
+
 <script>
       NProgress.start();
       $.when(GetDetails()).then(function () {
@@ -149,7 +160,7 @@ layout: noNav
                   'ID': parseQS().ID
             };
             $.ajax({
-                  url: apiSrc + "YL1.GetHouseTransaction.json",
+                  url: apiSrc + "YL1.GetGuestDetails.json",
                   method: "POST",
                   dataType: "json",
                   xhrFields: { withCredentials: true },
