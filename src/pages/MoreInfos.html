@@ -12,6 +12,13 @@ layout: noNav
       table tr:hover{
             color:#777;
       }
+      .badge.warning{
+            border-radius: 0;
+            color:white;
+            padding: 0.25rem;
+            font-size:0.85rem;
+
+      }
 </style>
 <hr>
 <div class="grid-container">
@@ -105,7 +112,7 @@ layout: noNav
                                     if (Rows[index].ImageSrc) {
                                           html += '<tr onclick="OpenLink(\''+Rows[index].ID+'\');return false;">';
                                           html += '<td style="width:170px;"><img class="Img150110" src="' + Rows[index].ImageSrc + '"alt="' + Rows[index].Description + '"></td>';
-                                          html += '<td><h5>急售个人茂华商品房，54学区房精装修年底下本<span class="badge warning">顶</span></h5><p class="baseinfo"><span>' + Rows[index].HouseLevelDetail + '</span><span>' + Rows[index].FCMJ + '平&nbsp;</span><span>南北</span><span>高层(共30层)</span></p><p class="baseinfo"><span>' + Rows[index].Description + '</span></p><p class="baseinfo"><span>个人- 陈先生</span></p></td>';
+                                          html += '<td><h5>急售个人茂华商品房，54学区房精装修年底下本 <span class="badge warning">顶</span></h5><p class="baseinfo"><span>' + Rows[index].HouseLevelDetail + '</span><span>' + Rows[index].FCMJ + '平&nbsp;</span><span>南北</span><span>高层(共30层)</span></p><p class="baseinfo"><span>' + Rows[index].Description + '</span></p><p class="baseinfo"><span>个人- 陈先生</span></p></td>';
                                           html += '<td><h3 style="color:red;">' + Rows[index].FCZJ + '万</h3>9166元 /㎡</td > ';
                                           html += '<td style="vertical-align:top">今天</td>';
                                           html += '</tr>';
@@ -117,11 +124,11 @@ layout: noNav
                   });
       }
       $(window).scroll(function (e) {
-            var buttonTop = $(':button').offset().top;
-            var top = $(document).scrollTop() + $(window).height();
-            if (top >= buttonTop && top < buttonTop + 20) {
-               setTimeout(() => {GetTops('', 'container');
-               }, 1000);   
+            var dh=$(document).height(),
+            scroolH=$(document).scrollTop() + $(window).height();
+           
+            if(dh==scroolH){
+                  GetTops('', 'container')
             }
       });
       function OpenLink(ID){
