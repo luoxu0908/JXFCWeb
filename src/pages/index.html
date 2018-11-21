@@ -19,7 +19,7 @@ meta-title: Index
   </div>
   <div class="grid-x">
     <div class="cell small-12 large-7">
-      <ul class="tabs tabletab" targetContain="panel21" dataType="出售">
+      <ul class="tabs tabletab" targetContain="panel21" dataType="1">
         <li class="tabs-title"><a aria-selected="true">出售房源</a></li>
         <li class="tabs-title"><a>个人房源</a></li>
         <li class="tabs-title"><a>中介房源</a></li>
@@ -68,7 +68,7 @@ meta-title: Index
 
   <div class="grid-x">
     <div class="cell small-12 large-7">
-      <ul class="tabs tabletab" targetContain="panel31" dataType="出租">
+      <ul class="tabs tabletab" targetContain="panel31" dataType="2">
         <li class="tabs-title"><a aria-selected="true">出租房源</a></li>
         <li class="tabs-title"><a>个人房源</a></li>
         <li class="tabs-title"><a>中介房源</a></li>
@@ -115,7 +115,7 @@ meta-title: Index
 
   <div class="grid-x">
     <div class="cell small-12 large-7">
-      <ul class="tabs tabletab" targetContain="panel41" dataType="店铺">
+      <ul class="tabs tabletab" targetContain="panel41" dataType="3">
         <li class="tabs-title"><a aria-selected="true">店铺转让</a></li>
         <li class="tabs-title"><a href="#panel42">个人房源</a></li>
         <li class="tabs-title"><a href="#panel43">中介房源</a></li>
@@ -164,11 +164,11 @@ meta-title: Index
     SaveIP();
     NProgress.start();
     $(function () {
-      $.when(GetTops('', "panel1d"), GetTableData("", "", "panel21")).then(function () {
+      $.when(GetTops('', "panel1d"), GetTableData("1", "", "panel21")).then(function () {
         $('.grid-container').css("opacity", 1);
         NProgress.done();
       })
-      GetTableData("", "", "panel31"); GetTableData("", "", "panel41")
+      GetTableData("2", "", "panel31"); GetTableData("3", "", "panel41")
       $(".tabs li").click(function () {
         $(this).siblings().find("a").removeAttr("aria-selected");
         $(this).find("a").attr("aria-selected", 'true');
@@ -236,11 +236,16 @@ meta-title: Index
         });
     }
     function GetTableData(Type, SubType, Contain) {
+      if(SubType==1) {SubType='I'}
+      else if(SubType==2){
+        SubType='O';
+      }
       var data = {
-        'Type': SubType
+        'Type': Type,
+        'PersonType':SubType
       };
       $.ajax({
-        url: apiSrc + "YL1.GetTopSixByType.json",
+        url: apiSrc + "YL1.GetHourseInfo.json",
         method: "POST",
         dataType: "json",
         xhrFields: { withCredentials: true },
@@ -253,6 +258,7 @@ meta-title: Index
         .done(function (data) {
           NProgress.done();
           var Rows = data.d.RetData.Tbl.Rows;
+          $("#" + Contain).html('');
           if (Rows.length > 0) {
             var html = '<table class="unstriped hover">';
             for (let index = 0; index < Rows.length; index++) {

@@ -7,21 +7,23 @@ layout: noNav
             font-size: 1rem;
       }
 
-   
+
       .media-object-section span {
             cursor: pointer;
             color: #777 !important;
             font-size: 0.75rem !important;
       }
 
-     
+
       .media-object:hover {
             background-color: #f8f8f8;
             cursor: pointer;
       }
-      .media-object-section h5:hover{
+
+      .media-object-section h5:hover {
             color: red;
       }
+
       .badge.warning {
             border-radius: 0;
             color: white;
@@ -29,38 +31,58 @@ layout: noNav
             font-size: 0.85rem;
 
       }
-      .fright{
-            position:absolute;
+
+      .fright {
+            position: absolute;
             right: 20px;
             text-align: right;
       }
-      .media-object{
+
+      .media-object {
             position: relative;
             padding: 15px 0;
-            border-bottom:1px solid #dcdcdc;
+            border-bottom: 1px solid #dcdcdc;
       }
 </style>
 <hr>
-
+<div class="grid-container">
+      <article class="grid-container">
+            <nav aria-label="You are here:" role="navigation">
+                  <ul class="breadcrumbs">
+                        <li><a href="index.html">
+                                    <fa class="fa fa-home"></fa> 首页
+                              </a></li>
+                        <li><a href="index.html">
+                                    <fa class="fa fa-building"></fa> 房产
+                              </a></li>
+                        <li> <span class="show-for-sr">Current: </span>
+                              <fa class="fa fa-map-marker"></fa> 更多
+                        </li>
+                  </ul>
+            </nav>
+      </article>
+</div>
 <div class="grid-container" id="container">
 </div>
-<div style="text-align:center;"> <i class="fa fa-spinner MoveIcon"></i> </div>
+
 <script>
-      times = 1;
-      NProgress.start();
-      console.log(parseInt(1.632))
+      flag = 0; page=1,pageNum=30;
       $.when(GetTops('', 'container')).then(function () {
             $('.grid-container').css("opacity", 1);
-            NProgress.done();
+
             $('#element').foundation('scrollToLoc', loc, options, callback);
 
       });
       function GetTops(type, contain) {
+            NProgress.start();
             var data = {
-                  'Type': type
+                  'Type': parseQS().Type||'1',
+                  'InputStr':parseQS().search||'',
+                  'page':page,
+                  'pageNum':pageNum
             };
             $.ajax({
-                  url: apiSrc + "YL1.GetTopSixByType.json",
+                  url: apiSrc + "YL1.GetMoreHouseInfo.json",
                   method: "POST",
                   dataType: "json",
                   xhrFields: { withCredentials: true },
@@ -79,22 +101,26 @@ layout: noNav
                                     if (Rows[index].ImageSrc) {
                                           html += '<div class="media-object stack-for-small" onclick="OpenLink(\'' + Rows[index].ID + '\');return false;">';
                                           html += '<div class="media-object-section"><img class="Img150110" src="' + Rows[index].ImageSrc + '"alt="' + Rows[index].Description + '"></div>';
-                                          html += '<div class="media-object-section"><h5>急售个人茂华商品房，54学区房精装修年底下本 <span class="badge warning">优</span></h5><p class="baseinfo"><span>' + Rows[index].HouseLevelDetail + '</span><span>' + Rows[index].FCMJ + '平&nbsp;</span><span>南北</span><span>高层(共30层)</span></p><p class="baseinfo"><span>' + Rows[index].Description + '</span></p><p class="baseinfo"><span>个人- 陈先生</span><h3 class="hide-for-medium" style="color:red;bottom:27%;position:absolute;right:10px;">' + Rows[index].FCZJ + '万</h3></p></div>';
-                                          html += '<div class="media-object-section show-for-medium fright"> <span>今天</span><h3 style="color:red;margin-right: 120px;">' + Rows[index].FCZJ + '万</h3><span style="margin-right: 120px;">9166元 /㎡</span></div > ';
+                                          html += '<div class="media-object-section"><h5>'+Rows[index].FXBT+(Rows[index].WordSrc==""?"":"<span class='badge warning'>"+Rows[index].WordSrc+"</span>")+'</h5><p class="baseinfo"><span>' + Rows[index].HouseLevelDetail + '</span><span>' + Rows[index].FCMJ + '平&nbsp;</span><span>'+Rows[index].SZLC+'层(共'+Rows[index].GYLC+'层)</span></p><p class="baseinfo"><span>' + Rows[index].Description + '</span></p><p class="baseinfo"><span>个人-'+Rows[index].DisplayName +'</span><h3 class="hide-for-medium" style="color:red;bottom:27%;position:absolute;right:10px;">' + Rows[index].FCZJ + '万</h3></p></div>';
+                                          html += '<div class="media-object-section show-for-medium fright"> <span>今天</span><h3 style="color:red;margin-right: 120px;">' + Rows[index].FCZJ + '万</h3><span style="margin-right: 120px;">' + Rows[index].FCDJ + '元 /㎡</span></div > ';
                                           html += '</div>';
                                     }
                               }
                               $("#" + contain).append(html);
 
                         }
+                        else  {
+                              $("#" + contain).append("没有更多了！");flag=true;
+                        }
+                        if(Rows.length<=30){$("#" + contain).append("没有更多了！");flag=true;}//每页显示30条
                   });
       }
       $(window).scroll(function (e) {
             var dh = $(document).height(),
-                  scroolH = parseInt($(document).scrollTop() + $(window).height());
-            console.log(dh); console.log(scroolH);
-            if (dh == scroolH) {
-                  GetTops('', 'container')
+            scroolH = parseInt($(document).scrollTop() + $(window).height());
+            if ((dh == scroolH||dh==scroolH-1) &&flag==false) {
+                  page++;
+                  GetTops('', 'container');
             }
       });
       function OpenLink(ID) {
