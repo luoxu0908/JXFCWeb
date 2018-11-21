@@ -6,61 +6,49 @@ layout: noNav
       div {
             font-size: 1rem;
       }
-      table tr{
-            height: 135px;
-            border: 1px #f8f8f8 solid;
-            border-width: 1 0px;
-      }     
-      table tr span{
+
+   
+      .media-object-section span {
             cursor: pointer;
-            color:#777 !important;
+            color: #777 !important;
             font-size: 0.75rem !important;
       }
-      table tr:hover{
-            background-color:  #f8f8f8;
-            color: red;
+
+     
+      .media-object:hover {
+            background-color: #f8f8f8;
             cursor: pointer;
       }
-      .badge.warning{
+      .media-object-section h5:hover{
+            color: red;
+      }
+      .badge.warning {
             border-radius: 0;
-            color:white;
+            color: white;
             padding: 0.25rem;
-            font-size:0.85rem;
+            font-size: 0.85rem;
 
+      }
+      .fright{
+            position:absolute;
+            right: 20px;
+            text-align: right;
+      }
+      .media-object{
+            position: relative;
+            padding: 15px 0;
+            border-bottom:1px solid #dcdcdc;
       }
 </style>
 <hr>
-<div class="grid-container">
-      <article class="grid-container">
-            <nav aria-label="You are here:" role="navigation">
-                  <ul class="breadcrumbs">
-                        <li><a href="index.html">
-                                    <fa class="fa fa-home"></fa> 首页
-                              </a></li>
-                        <li><a href="index.html">
-                                    <fa class="fa fa-building"></fa> 房产
-                              </a></li>
-                        <li> <span class="show-for-sr">Current: </span>
-                              <fa class="fa fa-map-marker"></fa> 更多
-                        </li>
-                  </ul>
-            </nav>
-      </article>
-</div>
-<div class="grid-container" style="opacity:0">
-      <article class="grid-container">
-            <div class="grid-x grid-margin-x small-up-3 medium-up-4 large-up-5" >
-                  <table class="table" id="container">
-                  </table>
-            </div>
-      </article>
 
-      <br>
-      <div style="text-align:center;"> <button class="button"><i class="fa fa-spinner MoveIcon"></i> 加载更多</button></div>
+<div class="grid-container" id="container">
 </div>
+<div style="text-align:center;"> <i class="fa fa-spinner MoveIcon"></i> </div>
 <script>
       times = 1;
       NProgress.start();
+      console.log(parseInt(1.632))
       $.when(GetTops('', 'container')).then(function () {
             $('.grid-container').css("opacity", 1);
             NProgress.done();
@@ -89,28 +77,27 @@ layout: noNav
                               var html = '';
                               for (let index = 0; index < Rows.length; index++) {
                                     if (Rows[index].ImageSrc) {
-                                          html += '<tr onclick="OpenLink(\''+Rows[index].ID+'\');return false;">';
-                                          html += '<td style="width:170px;"><img class="Img150110" src="' + Rows[index].ImageSrc + '"alt="' + Rows[index].Description + '"></td>';
-                                          html += '<td><h5>急售个人茂华商品房，54学区房精装修年底下本 <span class="badge warning">顶</span></h5><p class="baseinfo"><span>' + Rows[index].HouseLevelDetail + '</span><span>' + Rows[index].FCMJ + '平&nbsp;</span><span>南北</span><span>高层(共30层)</span></p><p class="baseinfo"><span>' + Rows[index].Description + '</span></p><p class="baseinfo"><span>个人- 陈先生</span></p></td>';
-                                          html += '<td><h3 style="color:red;">' + Rows[index].FCZJ + '万</h3><span>9166元 /㎡</span></td > ';
-                                          html += '<td style="vertical-align:top"><span>今天</span></td>';
-                                          html += '</tr>';
+                                          html += '<div class="media-object stack-for-small" onclick="OpenLink(\'' + Rows[index].ID + '\');return false;">';
+                                          html += '<div class="media-object-section"><img class="Img150110" src="' + Rows[index].ImageSrc + '"alt="' + Rows[index].Description + '"></div>';
+                                          html += '<div class="media-object-section"><h5>急售个人茂华商品房，54学区房精装修年底下本 <span class="badge warning">优</span></h5><p class="baseinfo"><span>' + Rows[index].HouseLevelDetail + '</span><span>' + Rows[index].FCMJ + '平&nbsp;</span><span>南北</span><span>高层(共30层)</span></p><p class="baseinfo"><span>' + Rows[index].Description + '</span></p><p class="baseinfo"><span>个人- 陈先生</span><h3 class="hide-for-medium" style="color:red;bottom:27%;position:absolute;right:10px;">' + Rows[index].FCZJ + '万</h3></p></div>';
+                                          html += '<div class="media-object-section show-for-medium fright"> <span>今天</span><h3 style="color:red;margin-right: 120px;">' + Rows[index].FCZJ + '万</h3><span style="margin-right: 120px;">9166元 /㎡</span></div > ';
+                                          html += '</div>';
                                     }
                               }
-                              $("#" + contain).append(html); 
+                              $("#" + contain).append(html);
 
                         }
                   });
       }
       $(window).scroll(function (e) {
-            var dh=$(document).height(),
-            scroolH=$(document).scrollTop() + $(window).height();
-           
-            if(dh==scroolH){
+            var dh = $(document).height(),
+                  scroolH = parseInt($(document).scrollTop() + $(window).height());
+            console.log(dh); console.log(scroolH);
+            if (dh == scroolH) {
                   GetTops('', 'container')
             }
       });
-      function OpenLink(ID){
-         window.location.href="details.html?ID="+ID;
+      function OpenLink(ID) {
+            window.location.href = "details.html?ID=" + ID;
       }
 </script>

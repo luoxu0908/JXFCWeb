@@ -2,11 +2,11 @@
 layout: noNav
 ---
 <style>
-            .orbit-image {
-                  min-height: 370px;
-                  max-height: 370px;
-            }
-      </style>
+      .orbit-image {
+            min-height: 370px;
+            max-height: 370px;
+      }
+</style>
 <hr>
 <div class="grid-container" style="opacity:0">
       <div class="grid-x grid-margin-x">
@@ -70,28 +70,28 @@ layout: noNav
       </div>
       <hr>
       <div class="grid-x grid-margin-x">
-                  <div class="medium-8 cell small-12">
-                        <h4>房产特色</h3>
+            <div class="medium-8 cell small-12">
+                  <h4>房产特色</h3>
                         <p class="pic-desc-word"><span class="FCTS" data="true">>品胜房产刘佳为您服务 <br>楼盘介绍：<br>
                                     1.装修优势：中等装修，业主本人很少居住，保持的很干净 <br>2.楼层优势：中间楼层，舒适便利
                                     <br>3.产权优势：商品房，证过两年，安全交易，可按揭 <br>4.商业情况：人人乐，苏宁电器，雅荷花园等。 <br>5.交通情况：出门有30余路公交车，地铁二号线，交通方便
                               </span>
                         </p>
-                  </div>
-      
-            </div>
-      <div class="grid-x grid-margin-x">
-            <div class="medium-8 cell small-12">
-                  <h4>核心卖点</h3>
-                  <p class="pic-desc-word"><span class="CoreSellingPoint" data="true">>品胜房产刘佳为您服务 <br>楼盘介绍：<br>
-                              1.装修优势：中等装修，业主本人很少居住，保持的很干净 <br>2.楼层优势：中间楼层，舒适便利
-                              <br>3.产权优势：商品房，证过两年，安全交易，可按揭 <br>4.商业情况：人人乐，苏宁电器，雅荷花园等。 <br>5.交通情况：出门有30余路公交车，地铁二号线，交通方便
-                        </span>
-                  </p>
             </div>
 
       </div>
-     
+      <div class="grid-x grid-margin-x">
+            <div class="medium-8 cell small-12">
+                  <h4>核心卖点</h3>
+                        <p class="pic-desc-word"><span class="CoreSellingPoint" data="true">>品胜房产刘佳为您服务 <br>楼盘介绍：<br>
+                                    1.装修优势：中等装修，业主本人很少居住，保持的很干净 <br>2.楼层优势：中间楼层，舒适便利
+                                    <br>3.产权优势：商品房，证过两年，安全交易，可按揭 <br>4.商业情况：人人乐，苏宁电器，雅荷花园等。 <br>5.交通情况：出门有30余路公交车，地铁二号线，交通方便
+                              </span>
+                        </p>
+            </div>
+
+      </div>
+
       <div class="grid-x grid-margin-x">
             <div class="medium-8 cell small-12">
                   <h4>业主心态</h4>
@@ -99,9 +99,9 @@ layout: noNav
                         <span class="OwnerMentality" data="true"></span>
                   </p>
             </div>
-                
+
       </div>
-      
+
       <div class="grid-x grid-margin-x">
 
             <div class="medium-8 cell small-12">
@@ -109,9 +109,9 @@ layout: noNav
                   <p class="pic-desc-word">
                         <span class="VillageMatch" data="true"></span>
                   </p>
-            </div>            
+            </div>
       </div>
-   
+
       <div class="grid-x grid-margin-x">
             <div class="medium-8 cell small-12">
                   <h4>服务介绍</h4>
@@ -146,10 +146,24 @@ layout: noNav
 
       <div class="grid-x grid-margin-x medium-up-3 large-up-4 smll-up-2" id="HuXingTu">
       </div>
+      <div class="row column">
+            <h4>小区价格走势</h3>
+                  <select id="Year" style="width:30%;" onchange="GetReport()"></select>
+      </div>
+      <div id="main1" class="grid-x grid-margin-x" style="height:400px;"></div>
       <hr>
 </div>
-
+<script src="assets/js/single-js/echarts.min.js"></script>
 <script>
+
+      var return_list = new Array();
+      $(document).ready(function () {
+            $.when(GetYear()).then(function () {
+                  GetReport();
+            })
+
+      });
+
       NProgress.start();
       $.when(GetDetails()).then(function () {
             $('.grid-container').css("opacity", 1);
@@ -159,39 +173,126 @@ layout: noNav
             var data = {
                   'ID': parseQS().ID
             };
-            $.ajax({
-                  url: apiSrc + "YL1.GetGuestDetails.json",
-                  method: "POST",
-                  dataType: "json",
-                  xhrFields: { withCredentials: true },
-                  data: {
-                        'data': JSON.stringify(data),
-                        'WebPartKey': '021cb7cca70748ff89795e3ad544d5eb',
-                        'ReqGUID': 'b4bbedbf-e591-4b7a-ad20-101f8f656277'
-                  }
-            })
-                  .done(function (data) {
-                        var Row = data.d.RetData.Tbl.Rows[0];
-                        $(".grid-container").find('span[data=true]').each(function () {
-                              var cla = $(this).attr('class');
-                              $("." + cla).html(Row[cla] || '');
-                        });
-                        if (Row.ImageList) {
-                              var images = Row.ImageList.split(";"); var html = "", orhtm = "";
-                              for (let index = 0; index < images.length, images[index]; index++) {
-                                    if (index == 0) {
-                                          orhtm += '<li class="is-active orbit-slide"><figure class="orbit-figure"><img class="orbit-image"  src="../../../UploadImages/Temp/' + images[index] + '" alt="图片无法加载"></figure></li>';
-                                    }
-                                    else {
-                                          orhtm += '<li class="orbit-slide"><figure class="orbit-figure"><img class="orbit-image" src="../../../UploadImages/Temp/' + images[index] + '" alt="图片无法加载"></figure></li>';
-                                    }
-
-                                    html += '<div class="cell"><img class="thumbnail" src="../../../UploadImages/Temp/' + images[index] + '"  data-lightbox="' + images[index].split("/"[1]) + '"></div>';
-                              }
-                              $("#HuXingTu").html(html);
-                              $('.orbit-container').html(orhtm);
-                              var elem = new Foundation.Orbit($(".orbit"));
-                        }
+            $.post(apiSrc + "YL1.GetGuestDetails.json", RebuidData(data), function (data) {
+                  var Row = data.d.RetData.Tbl.Rows[0];
+                  $(".grid-container").find('span[data=true]').each(function () {
+                        var cla = $(this).attr('class');
+                        $("." + cla).html(Row[cla] || '');
                   });
+                  if (Row.ImageList) {
+                        var images = Row.ImageList.split(";"); var html = "", orhtm = "";
+                        for (let index = 0; index < images.length, images[index]; index++) {
+                              if (index == 0) {
+                                    orhtm += '<li class="is-active orbit-slide"><figure class="orbit-figure"><img class="orbit-image"  src="../../../UploadImages/Temp/' + images[index] + '" alt="图片无法加载"></figure></li>';
+                              }
+                              else {
+                                    orhtm += '<li class="orbit-slide"><figure class="orbit-figure"><img class="orbit-image" src="../../../UploadImages/Temp/' + images[index] + '" alt="图片无法加载"></figure></li>';
+                              }
+
+                              html += '<div class="cell"><img class="thumbnail" src="../../../UploadImages/Temp/' + images[index] + '"  data-lightbox="' + images[index].split("/"[1]) + '"></div>';
+                        }
+                        $("#HuXingTu").html(html);
+                        $('.orbit-container').html(orhtm);
+                        var elem = new Foundation.Orbit($(".orbit"));
+                  }
+            });
+
+      }
+
+
+      function GetReport() {
+            $.when(GetHoursePrice()).then(function () {
+                  HourseReport();
+            });
+
+      }
+
+      function GetYear() {
+            var myDate = new Date();
+            //获取当前年
+            var year = myDate.getFullYear();
+            for (i = 5; i--; i > 0) {
+                  var dataYear = year - i;
+                  $("#Year").append("<option value=" + dataYear.toString() + ">" + dataYear.toString() + "</option>");
+            }
+            $("#Year").val(year);
+      }
+      function GetHoursePrice() {
+            var data = {
+                  'XQMC': 'chuanyuan', 'Year': '2018'
+            };
+            return $.post(apiSrc + "YL1.GetHousePrice.json", RebuidData(data), function (data) {
+                  var R = data.d.RetData.Tbl.Rows, RowCnt = R.length;
+                  if (RowCnt > 0) {
+                        return_list[0] = R[0]["Janurary"];
+                        return_list[1] = R[0]["February"];
+                        return_list[2] = R[0]["March"];
+                        return_list[3] = R[0]["April"];
+                        return_list[4] = R[0]["May"];
+                        return_list[5] = R[0]["June"];
+                        return_list[6] = R[0]["July"];
+                        return_list[7] = R[0]["August"];
+                        return_list[8] = R[0]["September"];
+                        return_list[9] = R[0]["October"];
+                        return_list[10] = R[0]["November"];
+                        return_list[11] = R[0]["December"];
+                  }
+                  else {
+                        return_list[0] = 0;
+                        return_list[1] = 0;
+                        return_list[2] = 0;
+                        return_list[3] = 0;
+                        return_list[4] = 0;
+                        return_list[5] = 0;
+                        return_list[6] = 0;
+                        return_list[7] = 0;
+                        return_list[8] = 0;
+                        return_list[9] = 0;
+                        return_list[10] = 0;
+                        return_list[11] = 0;
+                  }
+            });
+      }
+
+      function HourseReport() {
+
+            var myChart = echarts.init(document.getElementById('main1'));
+            myChart.showLoading();
+            option = {
+                  // title: {
+                  //       text: '小区价格走势'
+                  // },
+                  tooltip: {
+                        trigger: 'axis'
+                  },
+                  xAxis: {
+                        type: 'category',
+                        data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+
+                  },
+                  yAxis: {
+                        type: 'value',
+                        text:'价格'
+                  },
+                  series: [
+                        {
+                              name: '价格',
+                              type: 'line',
+                              stack: '2018',
+                              data: return_list,
+                              smooth: true,
+                              markPoint: {
+                                    data: [
+                                          { type: 'max', name: '最大值' },
+                                          { type: 'min', name: '最小值' }
+                                    ]
+                              },
+                        }
+
+                  ]
+            };
+            myChart.setOption(option);
+            myChart.hideLoading();
+
       }
 </script>

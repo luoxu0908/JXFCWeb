@@ -158,5 +158,12 @@ cookie = function (key, value, options) {
     }
     return null;
 };
+function RebuidData(obj){
+   return {
+    'data': JSON.stringify(obj),
+    'WebPartKey': getWebPartKey(),
+    'ReqGUID': getGUID()
+   }
+}
 
 
