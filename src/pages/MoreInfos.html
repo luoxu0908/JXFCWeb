@@ -69,9 +69,6 @@ layout: noNav
       flag = 0; page = 1, pageNum = 30;
       $.when(GetTops('', 'container')).then(function () {
             $('.grid-container').css("opacity", 1);
-
-            $('#element').foundation('scrollToLoc', loc, options, callback);
-
       });
       function GetTops(type, contain) {
             $('#search').val(parseQS().SearchText || '');
@@ -82,39 +79,33 @@ layout: noNav
                   'page': page,
                   'pageNum': pageNum
             };
-            $.ajax({
-                  url: apiSrc + "YL1.GetMoreHouseInfo.json",
-                  method: "POST",
-                  dataType: "json",
-                  xhrFields: { withCredentials: true },
-                  data: {
-                        'data': JSON.stringify(data),
-                        'WebPartKey': '021cb7cca70748ff89795e3ad544d5eb',
-                        'ReqGUID': 'b4bbedbf-e591-4b7a-ad20-101f8f656277'
-                  }
-            })
-                  .done(function (data) {
-                        NProgress.done();
-                        var Rows = data.d.RetData.Tbl.Rows;
-                        if (Rows.length > 0) {
-                              var html = '';
-                              for (let index = 0; index < Rows.length; index++) {
-                                    if (Rows[index].ImageSrc) {
-                                          html += '<div class="media-object stack-for-small" onclick="OpenLink(\'' + Rows[index].ID + '\');return false;">';
-                                          html += '<div class="media-object-section"><img class="Img150110" src="' + Rows[index].ImageSrc + '"alt="' + Rows[index].Description + '"></div>';
+            return $.post(apiSrc + "YL1.GetMoreHouseInfo.json", RebuidData(data), function (data) {
+                  NProgress.done();
+                  var Rows = data.d.RetData.Tbl.Rows;
+                  if (Rows.length > 0) {
+                        var html = '';
+                        for (let index = 0; index < Rows.length; index++) {
+                              if (Rows[index].ImageSrc) {
+                                    html += '<div class="media-object stack-for-small" onclick="OpenLink(\'' + Rows[index].ID + '\');return false;">';
+                                    html += '<div class="media-object-section"><img class="Img150110" src="' + Rows[index].ImageSrc + '"alt="' + Rows[index].Description + '"></div>';
+                                    if (Rows[index].FCZJ) {
                                           html += '<div class="media-object-section"><h5>' + Rows[index].FXBT + (Rows[index].WordSrc == "" ? "" : "<span class='badge warning'>" + Rows[index].WordSrc + "</span>") + '</h5><p class="baseinfo"><span>' + Rows[index].HouseLevelDetail + '</span><span>' + Rows[index].FCMJ + '平&nbsp;</span><span>' + Rows[index].SZLC + '层(共' + Rows[index].GYLC + '层)</span></p><p class="baseinfo"><span>' + Rows[index].Description + '</span></p><p class="baseinfo"><span>个人-' + Rows[index].DisplayName + '</span><h1 class="hide-for-medium" style="color:red;bottom:22%;position:absolute;right:10px;">' + Rows[index].FCZJ + '万</h1></p></div>';
-                                          html += '<div class="media-object-section show-for-medium fright"> <span>今天</span><h3 style="color:red;margin-right: 120px;">' + Rows[index].FCZJ + '万</h3><span style="margin-right: 120px;">' + Rows[index].FCDJ + '元 /㎡</span></div > ';
-                                          html += '</div>';
+                                          html += '<div class="media-object-section show-for-medium fright"> <span>' + Rows[index].ModifiedDate.substring(0, 10) + '</span><h3 style="color:red;margin-right: 120px;">' + Rows[index].FCZJ + '万</h3><span style="margin-right: 120px;">' + Rows[index].FCDJ + '元 /㎡</span></div > ';
                                     }
+                                    else {
+                                          html += '<div class="media-object-section"><h5>' + Rows[index].FXBT + (Rows[index].WordSrc == "" ? "" : "<span class='badge warning'>" + Rows[index].WordSrc + "</span>") + '</h5><p class="baseinfo"><span>' + Rows[index].HouseLevelDetail + '</span><span>' + Rows[index].FCMJ + '平&nbsp;</span><span>' + Rows[index].SZLC + '层(共' + Rows[index].GYLC + '层)</span></p><p class="baseinfo"><span>' + Rows[index].Description + '</span></p><p class="baseinfo"><span>个人-' + Rows[index].DisplayName + '</span><h1 class="hide-for-medium" style="color:red;bottom:22%;position:absolute;right:10px;">' + Rows[index].FCDJ + '元/月</h1></p></div>';
+                                          html += '<div class="media-object-section show-for-medium fright"> <span>' + Rows[index].ModifiedDate.substring(0, 10) + '</span><h3 style="color:red;margin-right: 120px;">' + Rows[index].FCDJ + '元/月</h3></div > ';
+                                    }
+                                    html += '</div>';
                               }
-                              $("#" + contain).append(html);
-
                         }
-                        else {
-                              $("#" + contain).append("没有更多了！"); flag = true;
-                        }
-                        if (Rows.length <= 30) { $("#" + contain).append("没有更多了！"); flag = true; }//每页显示30条
-                  });
+                        $("#" + contain).append(html);
+                  }
+                  else {
+                        $("#" + contain).append("没有更多了！"); flag = true;
+                  }
+                  if (Rows.length <= 30) { $("#" + contain).append("没有更多了！"); flag = true; }//每页显示30条
+            });
       }
       $(window).scroll(function (e) {
             var dh = $(document).height(),

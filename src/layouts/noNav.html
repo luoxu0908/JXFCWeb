@@ -23,6 +23,11 @@
    {{> GoToTop}}
   <div  id="Body">{{> body}}</div>
   {{> footer}}
+  <script>
+    $(function(){
+      $('#Body').css('min-height',$(window).height()-$('#topMenu').height()-170);
+    });
+ </script>
 </body>
 
 </html>

@@ -141,13 +141,11 @@ meta-title: Index
             <li class="is-active orbit-slide">
               <figure class="orbit-figure">
                 <img class="orbit-image" src="assets/img/1.jpg" alt="Space">
-
               </figure>
             </li>
             <li class="orbit-slide">
               <figure class="orbit-figure">
                 <img class="orbit-image" src="assets/img/2.jpg" alt="Space">
-
               </figure>
             </li>
           </ul>
@@ -161,9 +159,11 @@ meta-title: Index
     </div>
   </div>
   <script>
-    SaveIP();
+    SaveIP(); $('#search').attr('placeholder', "出售 / 出租 / 店铺转让 / 求购 / 求租");
     NProgress.start();
     $(function () {
+
+
       $.when(GetTops('', "panel1d"), GetTableData("1", "", "panel21")).then(function () {
         $('.grid-container').css("opacity", 1);
         NProgress.done();
@@ -190,80 +190,46 @@ meta-title: Index
       var data = {
         'Type': type
       };
-      $.ajax({
-        url: apiSrc + "YL1.GetTopSixByType.json",
-        method: "POST",
-        dataType: "json",
-        xhrFields: { withCredentials: true },
-        data: {
-          'data': JSON.stringify(data),
-          'WebPartKey': '021cb7cca70748ff89795e3ad544d5eb',
-          'ReqGUID': 'b4bbedbf-e591-4b7a-ad20-101f8f656277'
-        }
-      })
-        .done(function (data) {
-          NProgress.done();
-          var Rows = data.d.RetData.Tbl.Rows;
-          if (Rows.length > 0) {
-            var html = '<div class="grid-x grid-margin-x">';
-            for (let index = 0; index < Rows.length; index++) {
-              if (Rows[index].ImageSrc) {
-                html += ' <div class="cell medium-3 small-12"><div class="callout" data-equalizer-watch><a href="details.html?ID=' + Rows[index].ID + '" target="_blank"><div class="listContent"><img src="' + Rows[index].ImageSrc + '"></div>' + Rows[index].Description + ' ' + Rows[index].HouseLevelDetail + ' ' + Rows[index].FCZJ + '万</a></div></div>'
-              }
+    return  $.post(apiSrc + "YL1.GetTopSixByType.json", RebuidData(data), function (data) {
+        NProgress.done();
+        var Rows = data.d.RetData.Tbl.Rows;
+        if (Rows.length > 0) {
+          var html = '<div class="grid-x grid-margin-x">';
+          for (let index = 0; index < Rows.length; index++) {
+            if (Rows[index].ImageSrc) {
+              html += ' <div class="cell medium-3 small-12"><div class="callout" data-equalizer-watch><a href="details.html?ID=' + Rows[index].ID + '" target="_blank"><div class="listContent"><img src="' + Rows[index].ImageSrc + '"></div>' + Rows[index].Description + ' ' + Rows[index].HouseLevelDetail + ' ' + Rows[index].FCZJ + '万</a></div></div>'
             }
-            html += "</div>";
-            $("#" + contain).html(html);
           }
-        });
+          html += "</div>";
+          $("#" + contain).html(html);
+        }
+      });
     }
     function SaveIP() {
       var data = {
         'IPAdress': returnCitySN["cip"],
         'City': returnCitySN["cname"]
       };
-      $.ajax({
-        url: apiSrc + "YL1.SaveIPAddress.json",
-        method: "POST",
-        dataType: "json",
-        xhrFields: { withCredentials: true },
-        data: {
-          'data': JSON.stringify(data),
-          'WebPartKey': '021cb7cca70748ff89795e3ad544d5eb',
-          'ReqGUID': 'b4bbedbf-e591-4b7a-ad20-101f8f656277'
-        }
-      })
-        .done(function (data) {
-        });
+      return  $.post(apiSrc + "YL1.SaveIPAddress.json", RebuidData(data), function (data) {});
     }
     function GetTableData(Type, SubType, Contain) {
-      if(SubType==1) {SubType='I'}
-      else if(SubType==2){
-        SubType='O';
+      if (SubType == 1) { SubType = 'I' }
+      else if (SubType == 2) {
+        SubType = 'O';
       }
       var data = {
         'Type': Type,
-        'PersonType':SubType
+        'PersonType': SubType
       };
-      $.ajax({
-        url: apiSrc + "YL1.GetHourseInfo.json",
-        method: "POST",
-        dataType: "json",
-        xhrFields: { withCredentials: true },
-        data: {
-          'data': JSON.stringify(data),
-          'WebPartKey': '021cb7cca70748ff89795e3ad544d5eb',
-          'ReqGUID': 'b4bbedbf-e591-4b7a-ad20-101f8f656277'
-        }
-      })
-        .done(function (data) {
+      return  $.post(apiSrc + "YL1.GetHourseInfo.json", RebuidData(data), function (data) {
           NProgress.done();
           var Rows = data.d.RetData.Tbl.Rows;
           $("#" + Contain).html('');
           if (Rows.length > 0) {
             var html = '<table class="unstriped hover">';
             for (let index = 0; index < Rows.length; index++) {
-              html += '<tr>';
-              html += '<td> <a href="details.html?ID=' + Rows[index].ID + '" target="_blank">' + Rows[index].Description + '</a></td>';
+              html += '<tr onclick="OpenLink(\'' + Rows[index].ID + '\');return false;">';
+              html += '<td> <a href="details.html?ID=' + Rows[index].ID + '">' + Rows[index].Description + '</a></td>';
               html += ' <td>' + Rows[index].HouseLevelDetail + '</td>';
               html += ' <td>' + Rows[index].FCMJ + '平</td>';
               html += ' <td>' + Rows[index].FCZJ + '万</td>';
@@ -274,6 +240,9 @@ meta-title: Index
           }
         });
     }
+    function OpenLink(ID) {
+      window.location.href = "details.html?ID=" + ID;
+    }
   </script>
-  {{> footer}}
+
 </div>
