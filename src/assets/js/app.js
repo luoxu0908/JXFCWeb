@@ -9,11 +9,11 @@ import Foundation from 'foundation-sites';
 import './lib/foundation-explicit-pieces';
 import 'tablesaw/dist/tablesaw.jquery';
 import libs from './lib/dependancies';
-window.libs = libs;
+ window.libs = libs;
 
 $(document).foundation();
 
- libs.AOS.init();
+libs.AOS.init();
 
 $(function() {
    $(document).foundation().trigger('enhance.tablesaw');

@@ -6,6 +6,10 @@ layout: noNav
             min-height: 370px;
             max-height: 370px;
       }
+
+      .medium-8 h4 {
+            color: red;
+      }
 </style>
 <hr>
 <div class="grid-container" style="opacity:0">
@@ -25,10 +29,8 @@ layout: noNav
                                     <li class="orbit-slide">
                                           <img class="orbit-image" src="assets/img/loading.gif" style="height:370px;">
                                     </li>
-
                               </ul>
                         </div>
-
                   </div>
             </div>
             <div class=" cell medium-6  small-12" style="min-height:400px;">
@@ -63,10 +65,8 @@ layout: noNav
                         </div>
                   </div>
                   <hr>
-                  <a class="button expanded large" href="#" style="color:white !important; ">联系电话</a>
-
+                  <a class="button expanded large phone" href="javascript:void();" style="color:white !important; " alt="15398065879">联系电话</a>
             </div>
-
       </div>
       <hr>
       <div class="grid-x grid-margin-x">
@@ -78,7 +78,6 @@ layout: noNav
                               </span>
                         </p>
             </div>
-
       </div>
       <div class="grid-x grid-margin-x">
             <div class="medium-8 cell small-12">
@@ -99,7 +98,6 @@ layout: noNav
                         <span class="OwnerMentality" data="true"></span>
                   </p>
             </div>
-
       </div>
 
       <div class="grid-x grid-margin-x">
@@ -111,7 +109,6 @@ layout: noNav
                   </p>
             </div>
       </div>
-
       <div class="grid-x grid-margin-x">
             <div class="medium-8 cell small-12">
                   <h4>服务介绍</h4>
@@ -148,20 +145,21 @@ layout: noNav
       </div>
       <div class="row column">
             <h4>小区价格走势</h3>
-                  <select id="Year" style="width:30%;" onchange="GetReport()"></select>
+                  <select id="Year" style="width:30%;" onchange="GetReport();return false;"></select>
       </div>
       <div id="main1" class="grid-x grid-margin-x" style="height:400px;"></div>
       <hr>
 </div>
 <script src="assets/js/single-js/echarts.min.js"></script>
 <script>
-
       var return_list = new Array();
       $(document).ready(function () {
             $.when(GetYear()).then(function () {
                   GetReport();
-            })
-
+            });
+            $('.phone').click(function () {
+                  $(this).text($(this).attr('alt'));
+            });
       });
 
       NProgress.start();
@@ -272,7 +270,7 @@ layout: noNav
                   },
                   yAxis: {
                         type: 'value',
-                        text:'价格'
+                        text: '价格'
                   },
                   series: [
                         {

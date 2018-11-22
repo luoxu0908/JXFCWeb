@@ -167,8 +167,8 @@ meta-title: Index
       $.when(GetTops('', "panel1d"), GetTableData("1", "", "panel21")).then(function () {
         $('.grid-container').css("opacity", 1);
         NProgress.done();
-      })
-      GetTableData("2", "", "panel31"); GetTableData("3", "", "panel41")
+      });
+      GetTableData("2", "", "panel31"); GetTableData("3", "", "panel41");
       $(".tabs li").click(function () {
         $(this).siblings().find("a").removeAttr("aria-selected");
         $(this).find("a").attr("aria-selected", 'true');

@@ -1,28 +1,36 @@
-<div class="grid-container show-for-medium">
-  <div class="grid-x grid-margin-x">
-    <div class="medium-3 cell small-4" style="background:url(assets/img/logo.jpg);background-size:170px;background-repeat: no-repeat;background-position: -17px;">
+<div class="grid-container ">
+  <div class="grid-x grid-margin-x" >
+    <div class="medium-3 cell show-for-medium" onclick="window.location.href='index.html'" style="background:url(assets/img/logo.jpg);background-size:170px;background-repeat: no-repeat;background-position: -17px;cursor: pointer;">
     </div>
-    <div class="medium-7 cell small-8">
+    <div class="medium-7 cell small-12">
       <div class="grid-x" style="border:2px solid #FF552E;height: 40px;">
-        <div class="cell medium-10 small-9">
-          <input type="text" style="border:0;height:35px;">
+        <div class="cell medium-10 small-9" style="position:relative;">
+          <input type="text" style="border:0;height:35px;" id="search">
+          <div id="searchAdviceDiv">
+            <a class="serchspan" href="MoreInfos.html?Type=1">出售</a>
+            <a class="serchspan" href="MoreInfos.html?Type=2">出租</a>
+            <a class="serchspan" href="MoreInfos.html?Type=3">店铺转让</a>
+            <a class="serchspan" href="MoreInfos.html?Type=4">求购</a>
+            <a class="serchspan" href="MoreInfos.html?Type=5">求租</a></div>
         </div>
-        <div class="cell medium-2 small-3" style="text-align:center;background-color:#FF552E;line-height: 36px;height:36px;color:white;">
-          <i class="fa   fa-search"></i> 搜房源
+        <div class="cell medium-2 small-3" id="btnSearch" onclick="Search();return false;" style="text-align:center;background-color:#FF552E;height:36px;line-height: 36px;color:white;cursor: pointer;">
+          <i class="fa  fa-search"></i> 搜房源
         </div>
       </div>
     </div>
   </div>
 </div>
-<div class="grid-container hide-for-medium">
-    <div class="grid-x" style="border:2px solid #FF552E;height: 40px;">
-        <div class="cell medium-10 small-9">
-          <input type="text" style="border:0;height:35px;">
-        </div>
-        <div class="cell medium-2 small-3" style="text-align:center;background-color:#FF552E;height:36px;line-height: 36px;color:white;">
-          <i class="fa   fa-search"></i> 搜房源
-        </div>
-      </div>
-</div>
 <br>
+<script>
+document.onkeydown = function (e) {
+            if (!e) e = window.event;
+            if ((e.keyCode || e.which) == 13) {
+              Search();
+            }
+        }
+function Search(){
+  window.location.href="MoreInfos.html?Type=&SearchText="+$('#search').val()||$('#search2').val();
+}
+</script>
+
 
