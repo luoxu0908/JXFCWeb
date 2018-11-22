@@ -153,7 +153,7 @@ layout: noNav
                               <div class="stat"><span class="FCZJ" data="true">105</span>万</div><span>房屋总价</span>
                         </a></li>
                   <li><a href="#">
-                              <div class="stat"><span class="FirstPayment" data="true">31.5</span>万</div><span >首付</span>
+                              <div class="stat"><span class="FirstPayment" data="true">31.5</span>万</div><span>首付</span>
                         </a></li>
                   <li><a href="#">
                               <div class="stat"><span class="FCLX" data="true">普通住宅</span></div><span>房屋类型</span>
@@ -200,11 +200,11 @@ layout: noNav
             };
             $.post(apiSrc + "YL1.GetGuestDetails.json", RebuidData(data), function (data) {
                   var Row = data.d.RetData.Tbl.Rows[0];
-                  if (Row.JYLX == 1||Row.JYLX == 3) {
-                        $('.chushouinfo').show();
-                  }
-                  else if (Row.JYLX == 2||Row.JYLX == 4) {
+                  if (Row.JYLX == 2) {
                         $('.chuzuinfo').show();
+                  }
+                  else {
+                        $('.chushouinfo').show();
                   }
                   $(".grid-container").find('span[data=true]').each(function () {
                         var cla = $(this).attr('class');

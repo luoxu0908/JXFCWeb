@@ -228,11 +228,17 @@ meta-title: Index
           if (Rows.length > 0) {
             var html = '<table class="unstriped hover">';
             for (let index = 0; index < Rows.length; index++) {
-              html += '<tr onclick="OpenLink(\'' + Rows[index].ID + '\');return false;">';
+              html += '<tr style="cursor:pointer;" onclick="OpenLink(\'' + Rows[index].ID + '\');return false;">';
               html += '<td> <a href="details.html?ID=' + Rows[index].ID + '">' + Rows[index].Description + '</a></td>';
               html += ' <td>' + Rows[index].HouseLevelDetail + '</td>';
               html += ' <td>' + Rows[index].FCMJ + '平</td>';
-              html += ' <td>' + Rows[index].FCZJ + '万</td>';
+             
+             if(Type==2){
+                html += '<td>' + Rows[index].UDF2 + '元/月</td>';
+              }
+              else  {
+                html += '<td>' + Rows[index].FCZJ + '万</td>';
+              }
               html += "</tr>";
             }
             html += "</table>";
