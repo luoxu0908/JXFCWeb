@@ -1,5 +1,5 @@
 ---
-layout: noNav
+layout: default
 ---
 <style>
       .orbit-image {
@@ -17,6 +17,9 @@ layout: noNav
 
       .chuzuinfo {
             display: none;
+      }
+      #phonesearch{
+            margin-left: 15px;
       }
 </style>
 <hr>
@@ -74,7 +77,7 @@ layout: noNav
                         </div>
                   </div>
                   <hr>
-                  <a class="button expanded large phone" href="javascript:void();" style="color:white !important; " alt="">联系电话</a>
+                  <a class="button expanded large phone" href="javascript:;" style="color:white !important; " alt="">联系电话</a>
                   <span class="LXDH" data="true" style="display:none;"></span>
             </div>
       </div>
@@ -185,10 +188,12 @@ layout: noNav
                   GetReport();
             });
             $('.phone').click(function () {
-                  $(this).html($('.LXDH').text());
+                  $(this).html($('.LXDH').text()+'<i class="fa  fa-search" id="phonesearch" onclick="Seach();" ></i>');
             });
       });
-
+      function Seach(){
+             window.open("https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=1&tn=baidu&wd="+$('.LXDH').text());
+      }
       NProgress.start();
       $.when(GetDetails()).then(function () {
             $('.grid-container').css("opacity", 1);

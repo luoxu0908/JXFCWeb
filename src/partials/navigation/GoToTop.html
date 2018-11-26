@@ -1,6 +1,22 @@
 <style>
+    .GOTOTOP {
+        position: fixed;
+        right: 15px;
+        width: 60px;
+        height: 165px;
+        background: #000;
+        color: white;
+        font-size: 1.5rem;
+        text-align: center;
+        transition: all 0.5s;
+        bottom: 60px;
+        z-index: 2222;
+        text-align: center;
+
+    }
+
     .rightButton {
-        height: 45px;
+        height: 55px;
         transition: all 0.5s;
     }
 
@@ -10,47 +26,34 @@
 
     }
 
-   .GOTOTOP .fa {
+    .GOTOTOP .fa {
         color: white;
-        font-size:1.5rem;
-        padding-top: 0.5rem;
+        font-size: 1.5rem;
+        padding-top: 0.7rem;
     }
 
     .rightButton span {
         font-size: 0.78rem;
         color: white;
         word-wrap: break-word;
-        height: 45px;
-        width: 45px;
-        padding: 0.2rem;
+        height: 55px;
+        width: 60px;
+        padding: 0.5rem;
         display: none;
+        vertical-align: middle;
     }
 
-    .GOTOTOP {
-        position: fixed;
-        right: 15px;
-        width: 45px;
-        height: 135px;
-        background: #000;
-        color: white;
-        font-size: 1.5rem;
-        text-align: center;
-        transition: all 0.5s;
-        bottom: 60px;
-        z-index: 2222;
-
-    }
-    .btn2{
-        border-top:1px solid white;
-        border-bottom:1px solid white;
+    .btn2 {
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
     }
 </style>
 <div class="GOTOTOP">
-    <div class="rightButton btn1" id="scroolTop"><i class="fa fa-qq" ></i>
+    <div class="rightButton btn1" id="scroolTop"><i class="fa fa-qq"></i>
         <a href="tencent://message/?Site=baidu.com&uin=599212711&Menu=yes"><span>打开QQ</span></a>
     </div>
-    
-    <div class="rightButton btn2 " id="scroolTop"><i class="fa fa-phone" ></i>
+
+    <div class="rightButton btn2 " id="scroolTop"><i class="fa fa-phone"></i>
         <a href="javascript:;"><span>029-63080627</span></a>
     </div>
     <div class="rightButton btn3" id="scroolTop"><i class="fa fa-angle-up"></i>
@@ -61,7 +64,7 @@
     $(function () {
         $('.rightButton').hover(function () {
             $(this).find('i').hide();
-            $(this).find('span').show().css('display', 'block');
+            $(this).find('span').show().css('display', 'inline-block');
 
         }).mouseleave(function () {
             $(this).find('i').show(); $(this).find('span').hide();

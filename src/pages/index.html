@@ -4,19 +4,6 @@ meta-title: Index
 ---
 <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
 <div class="grid-container" style="opacity:0">
-  <ul class="tabs" data-deep-link="true" data-update-history="true" data-deep-link-smudge="true"
-    data-deep-link-smudge-delay="500" id="deeplinked-tabs">
-    <li class="tabs-title"><a aria-selected="true">房产首页</a></li>
-    <li class="tabs-title"><a>出 售</a></li>
-    <li class="tabs-title"><a>出 租</a></li>
-    <li class="tabs-title"><a>店铺转让</a></li>
-    <li class="tabs-title"><a>求 购</a></li>
-    <li class="tabs-title"><a>求 租</a></li>
-  </ul>
-  <div class="tabs-content" data-tabs-content="deeplinked-tabs">
-    <div class="tabs-panel is-active" id="panel1d">
-    </div>
-  </div>
   <div class="grid-x">
     <div class="cell small-12 large-7">
       <ul class="tabs tabletab" targetContain="panel21" dataType="1">
@@ -64,8 +51,6 @@ meta-title: Index
       </div>
     </div>
   </div>
-
-
   <div class="grid-x">
     <div class="cell small-12 large-7">
       <ul class="tabs tabletab" targetContain="panel31" dataType="2">
@@ -162,9 +147,7 @@ meta-title: Index
     SaveIP(); $('#search').attr('placeholder', "出售 / 出租 / 店铺转让 / 求购 / 求租");
     NProgress.start();
     $(function () {
-
-
-      $.when(GetTops('', "panel1d"), GetTableData("1", "", "panel21")).then(function () {
+      $.when( GetTableData("1", "", "panel21")).then(function () {
         $('.grid-container').css("opacity", 1);
         NProgress.done();
       });
@@ -172,11 +155,6 @@ meta-title: Index
       $(".tabs li").click(function () {
         $(this).siblings().find("a").removeAttr("aria-selected");
         $(this).find("a").attr("aria-selected", 'true');
-      });
-      $('#deeplinked-tabs li').click(function () {
-        NProgress.start();
-        var type = $(this).index() == 0 ? "" : $(this).index();
-        GetTops(type, "panel1d");
       });
       $('.tabletab li').click(function () {
         NProgress.start();

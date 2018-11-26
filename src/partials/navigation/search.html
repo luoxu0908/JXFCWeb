@@ -2,12 +2,19 @@
 #search{
   font-size: 0.75rem;
 }
+.QRCode{
+  transition: all 0.5s;
+  cursor: pointer;
+}
+.QRCode:hover{
+   transform: scale(1.5)
+}
 </style>
 <div class="grid-container ">
   <div class="grid-x grid-margin-x" >
     <div class="medium-3 cell show-for-medium" onclick="window.location.href='index.html'" style="background:url(assets/img/logo.jpg);background-size:170px;background-repeat: no-repeat;background-position: -17px;cursor: pointer;">
     </div>
-    <div class="medium-7 cell small-12">
+    <div class="medium-7 cell small-9">
       <div class="grid-x" style="border:2px solid #FF552E;height: 40px;">
         <div class="cell medium-10 small-9" style="position:relative;">
           <input type="text" style="border:0;height:35px;" id="search"  >
@@ -17,6 +24,9 @@
           <i class="fa  fa-search"></i> 搜房源
         </div>
       </div>
+    </div>
+    <div class="medium-2 cell small-3" style="text-align:right">
+       <img src="assets/img/QRCode.png" style="height:70px;" class="QRCode">
     </div>
   </div>
 </div>
