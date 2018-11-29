@@ -183,7 +183,32 @@ layout: default
 
       </div>
       <div class="row column">
-       <img src="../assets/img/advise.jpg" alt="">
+            <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
+                  <div class="orbit-wrapper">
+                        <ul class="orbit-container" id="Advertisement">
+                              <li class="is-active orbit-slide">
+                                    <figure class="orbit-figure">
+                                          <img class="orbit-image" src="assets/img/1.jpg" alt="Space">
+                                    </figure>
+                              </li>
+                              <li class="orbit-slide">
+                                    <figure class="orbit-figure">
+                                          <img class="orbit-image" src="assets/img/2.jpg" alt="Space">
+                                    </figure>
+                              </li>
+                              <li class="orbit-slide">
+                                    <figure class="orbit-figure">
+                                          <img class="orbit-image" src="assets/img/1.jpg" alt="Space">
+                                    </figure>
+                              </li>
+                              <li class="orbit-slide">
+                                    <figure class="orbit-figure">
+                                          <img class="orbit-image" src="assets/img/2.jpg" alt="Space">
+                                    </figure>
+                              </li>
+                        </ul>
+                  </div>
+            </div>
       </div>
 
       <div class="row column chushouinfo">
@@ -204,6 +229,7 @@ layout: default
                   $(this).html($('.LXDH').text() + '<i class="fa  fa-search" id="phonesearch" onclick="Seach();" ></i>');
             });
             GetTops('', 'tuijian');
+            GetPageAdvisement();
       });
       function Seach() {
             window.open("https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=1&tn=baidu&wd=" + $('.LXDH').text());
@@ -271,7 +297,21 @@ layout: default
                   HourseReport();
             });
       }
-
+      function GetPageAdvisement() {
+            return $.post(apiSrc + "YL1.GetClientAdvertisementDetails.json", RebuidData({}), function (data) {
+                  var Rows = data.d.RetData.Tbl.Rows;
+                  if (Rows.length > 0) {
+                        for (let index = 0; index < Rows.length; index++) {
+                              console.log(Rows[index].GGSX);
+                              // var imgIndex = Rows[index].GGSX - 1;
+                              // var obj = $('#Advertisement').find('.orbit-image:eq(' + imgIndex + ')');
+                              // if (obj) {
+                              //       $(obj).attr('src', Rows[index].ImageSrc).attr('link', Rows[index].GGLJ).attr('alt', Rows[index].GGBT);
+                              // }
+                        }
+                  }
+            });
+      }
       function GetYear() {
             var myDate = new Date();
             //获取当前年
