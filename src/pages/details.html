@@ -2,11 +2,14 @@
 layout: default
 ---
 <style>
-      .orbit-image {
+      #orbit1 .orbit-image {
             min-height: 370px;
             max-height: 370px;
       }
-
+#Advertisement  .orbit-image {
+            min-height: 200px;
+            max-height: 200px;
+      }
       .cell h4 {
             color: red;
       }
@@ -31,7 +34,7 @@ layout: default
       <br>
       <div class="grid-x grid-margin-x">
             <div class="cell medium-6  small-12" style="min-height:400px;overflow: hidden;">
-                  <div class="orbit" role="region" aria-label="Favorite Space Pictures">
+                  <div class="orbit" id="orbit1" role="region" aria-label="Favorite Space Pictures">
                         <div class="orbit-wrapper" style="height:370px;">
                               <div class="orbit-controls">
                                     <button class="orbit-previous"></button>
@@ -287,8 +290,8 @@ layout: default
                               html += '<div class="cell"><img class="thumbnail" src="../../../UploadImages/Temp/' + images[index] + '"  data-lightbox="' + images[index].split("/"[1]) + '"></div>';
                         }
                         $("#HuXingTu").html(html);
-                        $('.orbit-container').html(orhtm);
-                        var elem = new Foundation.Orbit($(".orbit"));
+                        $('#orbit1 .orbit-container').html(orhtm);
+                        var elem = new Foundation.Orbit($("#orbit1"));
                   }
             });
       }
@@ -302,12 +305,11 @@ layout: default
                   var Rows = data.d.RetData.Tbl.Rows;
                   if (Rows.length > 0) {
                         for (let index = 0; index < Rows.length; index++) {
-                              console.log(Rows[index].GGSX);
-                              // var imgIndex = Rows[index].GGSX - 1;
-                              // var obj = $('#Advertisement').find('.orbit-image:eq(' + imgIndex + ')');
-                              // if (obj) {
-                              //       $(obj).attr('src', Rows[index].ImageSrc).attr('link', Rows[index].GGLJ).attr('alt', Rows[index].GGBT);
-                              // }
+                              var imgIndex = Rows[index].GGSX - 1;
+                              var obj = $('#Advertisement').find('.orbit-image:eq(' + imgIndex + ')');
+                              if (obj) {
+                                    $(obj).attr('src', Rows[index].ImageSrc).attr('link', Rows[index].GGLJ).attr('alt', Rows[index].GGBT);
+                              }
                         }
                   }
             });
