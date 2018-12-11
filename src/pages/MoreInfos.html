@@ -85,7 +85,7 @@ layout: noNav
                   if (Rows.length > 0) {
                         var html = '';
                         for (let index = 0; index < Rows.length; index++) {
-                              if (Rows[index].ImageSrc) {
+                              // if (Rows[index].ImageSrc) {
                                     html += '<div class="media-object stack-for-small" onclick="OpenLink(\'' + Rows[index].ID + '\');return false;">';
                                     html += '<div class="media-object-section"><img class="Img150110" src="' + Rows[index].ImageSrc + '"alt="' + Rows[index].Description + '"></div>';
                                     if (Rows[index].JYLX==2) {
@@ -97,7 +97,7 @@ layout: noNav
                                           html += '<div class="media-object-section show-for-medium fright"> <span>' + Rows[index].ModifiedDate.substring(0, 10) + '</span><h3 style="color:red;margin-right: 120px;">' + Rows[index].FCZJ + '万</h3><span style="margin-right: 120px;">' + Rows[index].FCDJ + '元 /㎡</span></div > ';
                                     }
                                     html += '</div>';
-                              }
+                              // }
                         }
                         $("#" + contain).append(html);
                   }
