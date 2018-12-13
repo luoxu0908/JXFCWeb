@@ -124,7 +124,7 @@ layout: default
             </div>
       </div>
       <div class="grid-x grid-margin-x chushouinfo">
-            <div class="medium-8 cell small-12">
+            <div class="medium-12 cell small-12">
                   <h4>服务介绍</h4>
                   <p class="pic-desc-word">
                         <span class="ServiceIntroduction" data="true"></span>
@@ -275,7 +275,7 @@ layout: default
                   }
                   $(".grid-container").find('span[data=true]').each(function () {
                         var cla = $(this).attr('class');
-                        $("." + cla).html(Row[cla] || '');
+                        $("." + cla).html(Row[cla].replace(/(\r\n)|(\n)/g,'<br>') || '');
                   });
                   if (Row.ImageList) {
                         var images = Row.ImageList.split(";"); var html = "", orhtm = "";

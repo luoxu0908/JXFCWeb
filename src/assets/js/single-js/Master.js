@@ -30,7 +30,7 @@ getGUID = function () {
     });
     return uuid;
 };
-window.apiSrc="/JXFC/BCMain/";
+window.apiSrc="http://www.yanglingzhijia.com//JXFC/BCMain/";
 window.WebPartKey='021cb7cca70748ff89795e3ad544d5eb';
 window.ReqGUID='b4bbedbf-e591-4b7a-ad20-101f8f656277';
 
