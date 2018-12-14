@@ -88,7 +88,7 @@ layout: noNav
                               // if (Rows[index].ImageSrc) {
                                     html += '<div class="media-object stack-for-small" onclick="OpenLink(\'' + Rows[index].ID + '\');return false;">';
                                     html += '<div class="media-object-section"><img class="Img150110" src="' + Rows[index].ImageSrc + '"alt="' + Rows[index].Description + '"></div>';
-                                    if (Rows[index].JYLX==2) {
+                                    if (Rows[index].JYLX==2||Rows[index].JYLX==5) {
                                           html += '<div class="media-object-section"><h5>' + Rows[index].FXBT + (Rows[index].WordSrc == "" ? "" : "<span class='badge warning'>" + Rows[index].WordSrc + "</span>") + '</h5><p class="baseinfo"><span>' + Rows[index].HouseLevelDetail + '</span><span>' + Rows[index].FCMJ + '平&nbsp;</span><span>' + Rows[index].SZLC + '层(共' + Rows[index].GYLC + '层)</span></p><p class="baseinfo"><span>' + Rows[index].Description + '</span></p><p class="baseinfo"><span>个人-' + Rows[index].DisplayName + '</span><h1 class="hide-for-medium" style="color:red;bottom:22%;position:absolute;right:10px;">' + Rows[index].UDF2 + '元/月</h1></p></div>';
                                           html += '<div class="media-object-section show-for-medium fright"> <span>' + Rows[index].ModifiedDate.substring(0, 10) + '</span><h3 style="color:red;margin-right: 120px;">' + Rows[index].UDF2 + '元/月</h3></div > ';
                                     }
