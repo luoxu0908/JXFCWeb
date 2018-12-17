@@ -6,10 +6,12 @@ layout: default
             min-height: 370px;
             max-height: 370px;
       }
-#Advertisement  .orbit-image {
+
+      #Advertisement .orbit-image {
             min-height: 200px;
             max-height: 200px;
       }
+
       .cell h4 {
             color: red;
       }
@@ -267,6 +269,10 @@ layout: default
             };
             $.post(apiSrc + "YL1.GetGuestDetails.json", RebuidData(data), function (data) {
                   var Row = data.d.RetData.Tbl.Rows[0];
+                  $(document).attr("title", Row["FXBT"] + " -杨凌二手房买卖,杨凌二手租赁-杨凌之家");
+                  var metas = document.getElementsByTagName("meta");
+                  metas[5].content = Row["FXBT"] + '-杨凌二手房买卖,杨凌之家,杨凌二手房消息发布';
+                  metas[6].content = "杨凌," + Row["FXBT"] + Row["CoreSellingPoint"] + '-联系电话： ' + Row["LXDH"];
                   if (Row.JYLX == 2) {
                         $('.chuzuinfo').show();
                   }
@@ -275,7 +281,7 @@ layout: default
                   }
                   $(".grid-container").find('span[data=true]').each(function () {
                         var cla = $(this).attr('class');
-                        $("." + cla).html(Row[cla].replace(/(\r\n)|(\n)/g,'<br>') || '');
+                        $("." + cla).html(Row[cla].replace(/(\r\n)|(\n)/g, '<br>') || '');
                   });
                   if (Row.ImageList) {
                         var images = Row.ImageList.split(";"); var html = "", orhtm = "";

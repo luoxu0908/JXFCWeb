@@ -84,6 +84,10 @@ layout: noNav
                   var Rows = data.d.RetData.Tbl.Rows;
                   if (Rows.length > 0) {
                         var html = '';
+                        $(document).attr("title", '杨凌之家-'+Rows[0]["Description"] + " -杨凌二手房买卖,杨凌二手租赁-杨凌之家");
+                        var metas = document.getElementsByTagName("meta");
+                        metas[4].content = '杨凌之家-'+Rows[0]["FXBT"] + " -杨凌二手房买卖,杨凌二手租赁-杨凌之家";
+                        metas[5].content = '杨凌之家-'+Rows[0]["FXBT"] + " -杨凌二手房买卖,杨凌二手租赁-杨凌之家";
                         for (let index = 0; index < Rows.length; index++) {
                               // if (Rows[index].ImageSrc) {
                                     html += '<div class="media-object stack-for-small" onclick="OpenLink(\'' + Rows[index].ID + '\');return false;">';
